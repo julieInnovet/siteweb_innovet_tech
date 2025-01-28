@@ -19,7 +19,7 @@ const team: TeamMember[] = [
       "Par la suite, deux années passées auprès d'un vétérinaire itinérant lui révèlent les défis spécifiques de la pratique en solo, notamment la gestion du temps et des tâches administratives. En 2019, installée à son compte, Julie constate l'ampleur de la surcharge administrative pesant sur les vétérinaires. Elle lance alors un service de secrétariat dédié basé sur l'audio, facilitant la rédaction de comptes rendus et l'encodage de factures.",
       "Consciente de la révolution numérique en cours, elle décide d'intégrer l'intelligence artificielle (IA) dans ses solutions. Ainsi naît InnoVetTech, avec pour mission de simplifier le quotidien des vétérinaires en proposant des assistants IA sur mesure, allégeant les tâches récurrentes pour que chacun puisse se consacrer pleinement aux soins et au bien-être animal."
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/julie-samama-fondatrice-innovet-tech.jpg"
+    imageUrl: "/src/assets/images/julie-samama-fondatrice-innovet-tech.jpeg"
   },
   {
     name: "Yannick Audubert",
@@ -31,7 +31,7 @@ const team: TeamMember[] = [
       "Superviser le développement des solutions IA, en les adaptant aux besoins concrets des vétérinaires",
       "Garantir une intégration fluide pour améliorer diagnostics, processus administratifs et communication client"
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/yannick-audubert-directeur-projets-numeriques-innovet-tech.jpg"
+    imageUrl: "/src/assets/images/yannick-audubert-directeur-projets-numeriques-innovet-tech.jpeg"
   },
   {
     name: "Adeline Ayache",
@@ -44,7 +44,7 @@ const team: TeamMember[] = [
       "Optimiser les processus administratifs (suivi, relation client, organisation)",
       "Accompagner la transition numérique des vétérinaires grâce à des méthodes interactives"
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/adeline-ayache-formatrice-innovet-tech.jpg"
+    imageUrl: "/src/assets/images/adeline-ayache-formatrice-innovet-tech.jpeg"
   },
   {
     name: "Dhouha Selmi",
@@ -57,7 +57,7 @@ const team: TeamMember[] = [
       "Développer des algorithmes avancés pour améliorer diagnostics et analyse de données cliniques",
       "Créer des outils intuitifs répondant précisément aux besoins quotidiens des professionnels"
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/dhouha-selmi-responsable-elaboration-ia-innovet-tech.jpg"
+    imageUrl: "/src/assets/images/dhouha-selmi-responsable-elaboration-ia-innovet-tech.png"
   },
   {
     name: "Mustapha Sahli",
@@ -70,7 +70,7 @@ const team: TeamMember[] = [
       "Garantir la stabilité, la sécurité et l'efficacité des outils numériques",
       "Permettre aux praticiens de se concentrer sur l'essentiel : les soins aux animaux"
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/mustapha-sahli-ingenieur-ia-developpeur-full-stack.jpg"
+    imageUrl: "/src/assets/images/mustapha-sahli-ingenieur-ia-developpeur-full-stack.jpg"
   },
   {
     name: "Chaima Chakroun",
@@ -83,7 +83,7 @@ const team: TeamMember[] = [
       "Développer des fonctionnalités innovantes, depuis la phase de prototypage jusqu'à l'intégration finale, tout en prenant en compte l'optimisation SEO",
       "Travailler en étroite collaboration avec les autres pôles (IA, gestion, formation) pour livrer des solutions répondant aux exigences réelles de la pratique vétérinaire"
     ],
-    imageUrl: "https://raw.githubusercontent.com/bolt-bot/innovet-tech-assets/main/chaima-chakroun-graphiste-developpeuse-web-innovet-tech.jpg"
+    imageUrl: "/src/assets/images/chaima-chakroun-graphiste-developpeuse-web-innovet-tech.jpeg"
   }
 ];
 
@@ -115,7 +115,7 @@ export default function About() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-secondary-800 to-primary-400 text-white">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/src/assets/images/heros_section_a_propos.png')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
         <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="max-w-2xl">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">

@@ -108,7 +108,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-secondary-800 to-primary-400 text-white">
-        <div className="absolute inset-0 bg-[url('./assets/images/revolution-pratique-veterinaire-innovettech.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" 
+        <div className="absolute inset-0 bg-[url('/src/assets/images/revolution-pratique-veterinaire-innovettech.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" 
              role="img" 
              aria-label="Révolutionnez votre pratique vétérinaire avec l'IA - InnoVetTech">
         </div>

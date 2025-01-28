@@ -66,7 +66,7 @@ const solutions: Solution[] = [
       "Expérience client enrichie : Offrez des réponses rapides, un suivi rigoureux et une meilleure disponibilité",
       "Outils personnalisables : Adaptez les fonctionnalités selon votre taille et vos besoins spécifiques"
     ],
-    imageUrl: "https://images.unsplash.com/photo-1584986475400-2d6d6d3de3f1"
+    imageUrl: "/src/assets/images/agents_ia.png"
   },
   {
     id: "plateforme",
