@@ -1,53 +1,64 @@
-import React from 'react';
-import { MapPin, Phone, Mail, Clock, MessageSquare, Building2, ChevronRight } from 'lucide-react';
+import React from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  MessageSquare,
+  Building2,
+} from "lucide-react";
 
 const contactInfo = [
   {
     icon: <MapPin className="h-6 w-6" />,
     title: "Adresse",
     content: "123 Avenue de l'Innovation, 75000 Paris",
-    link: "https://maps.google.com"
+    link: "https://maps.google.com",
   },
   {
     icon: <Phone className="h-6 w-6" />,
     title: "Téléphone",
     content: "+33 1 23 45 67 89",
-    link: "tel:+33123456789"
+    link: "tel:+33123456789",
   },
   {
     icon: <Mail className="h-6 w-6" />,
     title: "Email",
     content: "contact@innovet-tech.com",
-    link: "mailto:contact@innovet-tech.com"
+    link: "mailto:contact@innovet-tech.com",
   },
   {
     icon: <Clock className="h-6 w-6" />,
     title: "Horaires",
     content: "Lun - Ven : 9h00 - 18h00",
-  }
+  },
 ];
 
 export default function Contact() {
   const [formData, setFormData] = React.useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    clinicName: '',
-    subject: '',
-    message: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    clinicName: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Ici, ajoutez la logique d'envoi du formulaire
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -62,8 +73,9 @@ export default function Contact() {
               Contactez-nous
             </h1>
             <p className="text-lg text-primary-50">
-              Vous souhaitez en savoir plus sur nos solutions d'IA pour votre clinique ? 
-              Notre équipe est là pour répondre à toutes vos questions.
+              Vous souhaitez en savoir plus sur nos solutions d'IA pour votre
+              clinique ? Notre équipe est là pour répondre à toutes vos
+              questions.
             </p>
           </div>
         </div>
@@ -80,7 +92,8 @@ export default function Contact() {
                 Nos informations
               </h2>
               <p className="mt-3 text-lg leading-6 text-gray-500">
-                N'hésitez pas à nous contacter par téléphone, email ou en remplissant le formulaire.
+                N'hésitez pas à nous contacter par téléphone, email ou en
+                remplissant le formulaire.
               </p>
               <dl className="mt-8 space-y-6">
                 {contactInfo.map((item, index) => (
@@ -91,13 +104,21 @@ export default function Contact() {
                       </span>
                     </dt>
                     <dd>
-                      <p className="font-medium text-secondary-700">{item.title}</p>
+                      <p className="font-medium text-secondary-700">
+                        {item.title}
+                      </p>
                       {item.link ? (
                         <a
                           href={item.link}
                           className="text-primary-400 hover:text-primary-500"
-                          target={item.link.startsWith('http') ? '_blank' : undefined}
-                          rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          target={
+                            item.link.startsWith("http") ? "_blank" : undefined
+                          }
+                          rel={
+                            item.link.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
                         >
                           {item.content}
                         </a>
@@ -112,10 +133,16 @@ export default function Contact() {
           </div>
           <div className="bg-white py-16 px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
             <div className="mx-auto max-w-lg lg:max-w-none">
-              <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="grid grid-cols-1 gap-y-6"
+              >
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="firstName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Prénom
                     </label>
                     <input
@@ -129,7 +156,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="lastName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Nom
                     </label>
                     <input
@@ -146,7 +176,10 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Email
                     </label>
                     <input
@@ -160,7 +193,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Téléphone
                     </label>
                     <input
@@ -175,7 +211,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="clinicName" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="clinicName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Nom de la clinique
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
@@ -194,7 +233,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Sujet
                   </label>
                   <select
@@ -215,7 +257,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Message
                   </label>
                   <div className="mt-1">
@@ -254,7 +299,8 @@ export default function Contact() {
               Questions fréquentes
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Retrouvez les réponses aux questions les plus courantes sur nos solutions.
+              Retrouvez les réponses aux questions les plus courantes sur nos
+              solutions.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl">
@@ -262,16 +308,19 @@ export default function Contact() {
               {[
                 {
                   question: "Comment fonctionne la démonstration ?",
-                  answer: "Nous organisons une session en visioconférence où nous vous présentons nos solutions adaptées à vos besoins. La démo dure environ 45 minutes et inclut une période de questions."
+                  answer:
+                    "Nous organisons une session en visioconférence où nous vous présentons nos solutions adaptées à vos besoins. La démo dure environ 45 minutes et inclut une période de questions.",
                 },
                 {
                   question: "Combien de temps dure l'installation ?",
-                  answer: "L'installation de nos solutions est rapide et peut être effectuée en moins de 48 heures. Notre équipe vous accompagne tout au long du processus."
+                  answer:
+                    "L'installation de nos solutions est rapide et peut être effectuée en moins de 48 heures. Notre équipe vous accompagne tout au long du processus.",
                 },
                 {
                   question: "Proposez-vous une formation ?",
-                  answer: "Oui, nous proposons une formation complète à votre équipe incluse dans nos forfaits. Des sessions de formation supplémentaires sont disponibles sur demande."
-                }
+                  answer:
+                    "Oui, nous proposons une formation complète à votre équipe incluse dans nos forfaits. Des sessions de formation supplémentaires sont disponibles sur demande.",
+                },
               ].map((faq, index) => (
                 <div key={index}>
                   <dt className="text-lg font-semibold leading-7 text-secondary-700">

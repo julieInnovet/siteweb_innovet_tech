@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Brain, Facebook, Twitter, Linkedin, Mail, MapPin } from 'lucide-react';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Brain, Facebook, Twitter, Linkedin, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Ici, ajoutez la logique d'envoi du formulaire newsletter
-    console.log('Newsletter subscription:', email);
+    console.log("Newsletter subscription:", email);
   };
 
   return (
@@ -21,7 +21,8 @@ export default function Footer() {
               <span className="font-bold text-xl">Innovet Tech</span>
             </NavLink>
             <p className="text-sm leading-6 text-neutral-300">
-              Solutions d'intelligence artificielle innovantes pour les vétérinaires.
+              Solutions d'intelligence artificielle innovantes pour les
+              vétérinaires.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-neutral-400 hover:text-primary-400">
@@ -38,55 +39,86 @@ export default function Footer() {
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Navigation</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Navigation
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
-                    <NavLink to="/" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Accueil
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/solutions" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/solutions"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Nos Solutions
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/tarifs" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/tarifs"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Tarifs
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/blog" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/blog"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Blog
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/a-propos" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/a-propos"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       À Propos
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/contact" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/contact"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Contact
                     </NavLink>
                   </li>
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">En savoir plus</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  En savoir plus
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
-                    <NavLink to="/cgv" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/cgv"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Conditions générales de vente
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/confidentialite" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/confidentialite"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Confidentialité
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/mentions-legales" className="text-sm leading-6 text-neutral-300 hover:text-primary-400">
+                    <NavLink
+                      to="/mentions-legales"
+                      className="text-sm leading-6 text-neutral-300 hover:text-primary-400"
+                    >
                       Mentions légales
                     </NavLink>
                   </li>
@@ -95,7 +127,9 @@ export default function Footer() {
             </div>
             <div>
               <div className="mb-8">
-                <h3 className="text-sm font-semibold leading-6 text-white">Contact</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Contact
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li className="flex gap-2">
                     <MapPin className="h-5 w-5 text-primary-400" />
@@ -105,12 +139,16 @@ export default function Footer() {
                   </li>
                   <li className="flex gap-2">
                     <Mail className="h-5 w-5 text-primary-400" />
-                    <span className="text-sm leading-6 text-neutral-300">contact@innovet-tech.com</span>
+                    <span className="text-sm leading-6 text-neutral-300">
+                      contact@innovet-tech.com
+                    </span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Restez informé(e) !</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Restez informé(e) !
+                </h3>
                 <p className="mt-2 text-sm text-neutral-300">
                   Inscrivez-vous à notre Newsletter pour suivre nos actualités.
                 </p>
@@ -138,7 +176,8 @@ export default function Footer() {
         </div>
         <div className="mt-16 border-t border-white/10 pt-8">
           <p className="text-xs leading-5 text-neutral-400">
-            &copy; {new Date().getFullYear()} Innovet Tech. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Innovet Tech. Tous droits
+            réservés.
           </p>
         </div>
       </div>

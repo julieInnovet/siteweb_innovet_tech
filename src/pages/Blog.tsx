@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Calendar, Clock, ChevronRight, Tag, Search } from 'lucide-react';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Calendar, Clock, ChevronRight, Tag, Search } from "lucide-react";
 
 const categories = [
   "Toutes les actualités",
@@ -8,70 +8,80 @@ const categories = [
   "Innovations Vétérinaires",
   "Gestion de Cabinet",
   "Santé Animale",
-  "Témoignages"
+  "Témoignages",
 ];
 
 const posts = [
   {
     id: 1,
     title: "L'IA révolutionne le diagnostic vétérinaire",
-    excerpt: "Découvrez comment l'intelligence artificielle améliore la précision des diagnostics en clinique vétérinaire.",
+    excerpt:
+      "Découvrez comment l'intelligence artificielle améliore la précision des diagnostics en clinique vétérinaire.",
     category: "Intelligence Artificielle",
     date: "15 Mars 2024",
     readTime: "5 min",
     imageUrl: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7",
-    tags: ["IA", "Diagnostic", "Innovation"]
+    tags: ["IA", "Diagnostic", "Innovation"],
   },
   {
     id: 2,
     title: "Optimiser la gestion administrative de votre clinique",
-    excerpt: "Guide pratique pour automatiser les tâches administratives et gagner du temps au quotidien.",
+    excerpt:
+      "Guide pratique pour automatiser les tâches administratives et gagner du temps au quotidien.",
     category: "Gestion de Cabinet",
     date: "12 Mars 2024",
     readTime: "8 min",
     imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-    tags: ["Gestion", "Automatisation", "Productivité"]
+    tags: ["Gestion", "Automatisation", "Productivité"],
   },
   {
     id: 3,
     title: "Les dernières innovations en imagerie vétérinaire",
-    excerpt: "Tour d'horizon des nouvelles technologies d'imagerie pour un diagnostic plus précis.",
+    excerpt:
+      "Tour d'horizon des nouvelles technologies d'imagerie pour un diagnostic plus précis.",
     category: "Innovations Vétérinaires",
     date: "10 Mars 2024",
     readTime: "6 min",
     imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef",
-    tags: ["Imagerie", "Technologie", "Diagnostic"]
+    tags: ["Imagerie", "Technologie", "Diagnostic"],
   },
   {
     id: 4,
     title: "Témoignage : Dr Martin et l'IA au quotidien",
-    excerpt: "Découvrez comment le Dr Martin a transformé sa pratique grâce à nos solutions d'IA.",
+    excerpt:
+      "Découvrez comment le Dr Martin a transformé sa pratique grâce à nos solutions d'IA.",
     category: "Témoignages",
     date: "8 Mars 2024",
     readTime: "4 min",
     imageUrl: "https://images.unsplash.com/photo-1537368910025-700350fe46c7",
-    tags: ["Témoignage", "Expérience", "IA"]
+    tags: ["Témoignage", "Expérience", "IA"],
   },
   {
     id: 5,
     title: "Prévention et suivi : l'importance des données",
-    excerpt: "Comment l'analyse des données améliore la prévention et le suivi des patients.",
+    excerpt:
+      "Comment l'analyse des données améliore la prévention et le suivi des patients.",
     category: "Santé Animale",
     date: "5 Mars 2024",
     readTime: "7 min",
     imageUrl: "https://images.unsplash.com/photo-1612531385446-f7e6d131e1d0",
-    tags: ["Données", "Prévention", "Suivi"]
-  }
+    tags: ["Données", "Prévention", "Suivi"],
+  },
 ];
 
 export default function Blog() {
-  const [selectedCategory, setSelectedCategory] = React.useState("Toutes les actualités");
+  const [selectedCategory, setSelectedCategory] = React.useState(
+    "Toutes les actualités",
+  );
   const [searchQuery, setSearchQuery] = React.useState("");
 
-  const filteredPosts = posts.filter(post => {
-    const matchesCategory = selectedCategory === "Toutes les actualités" || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredPosts = posts.filter((post) => {
+    const matchesCategory =
+      selectedCategory === "Toutes les actualités" ||
+      post.category === selectedCategory;
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -86,8 +96,9 @@ export default function Blog() {
               Blog & Actualités
             </h1>
             <p className="text-lg text-primary-50">
-              Découvrez nos derniers articles sur l'innovation vétérinaire, 
-              l'intelligence artificielle et les meilleures pratiques pour votre clinique.
+              Découvrez nos derniers articles sur l'innovation vétérinaire,
+              l'intelligence artificielle et les meilleures pratiques pour votre
+              clinique.
             </p>
           </div>
         </div>
@@ -104,8 +115,8 @@ export default function Blog() {
                   onClick={() => setSelectedCategory(category)}
                   className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium ${
                     selectedCategory === category
-                      ? 'bg-primary-400 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? "bg-primary-400 text-white"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
                   {category}
@@ -131,7 +142,10 @@ export default function Blog() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <article
+                key={post.id}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
                 <div className="aspect-w-16 aspect-h-9">
                   <img
                     src={post.imageUrl}
@@ -156,12 +170,13 @@ export default function Blog() {
                   <h2 className="text-xl font-bold text-secondary-700 mb-2">
                     {post.title}
                   </h2>
-                  <p className="text-gray-600 mb-4">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {post.tags.map((tag) => (
-                      <div key={tag} className="flex items-center gap-1 text-sm text-gray-500">
+                      <div
+                        key={tag}
+                        className="flex items-center gap-1 text-sm text-gray-500"
+                      >
                         <Tag className="h-4 w-4" />
                         {tag}
                       </div>
@@ -189,8 +204,8 @@ export default function Blog() {
                 Restez informé des dernières innovations
               </h2>
               <p className="text-primary-50 mb-8">
-                Inscrivez-vous à notre newsletter pour recevoir nos derniers articles 
-                et actualités sur l'innovation vétérinaire.
+                Inscrivez-vous à notre newsletter pour recevoir nos derniers
+                articles et actualités sur l'innovation vétérinaire.
               </p>
               <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input

@@ -1,22 +1,20 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { 
-  Bot, 
-  LineChart, 
-  Clock, 
-  ChevronRight, 
-  Brain, 
-  FileText, 
-  Stethoscope, 
-  Users, 
-  Database, 
+import React from "react";
+import { NavLink } from "react-router-dom";
+import {
+  Bot,
+  Clock,
+  ChevronRight,
+  Brain,
+  FileText,
+  Stethoscope,
+  Database,
   MessageSquare,
   Share2,
   Sparkles,
   Lightbulb,
   Heart,
-  Zap
-} from 'lucide-react';
+  Zap,
+} from "lucide-react";
 
 interface Solution {
   icon: React.ReactNode;
@@ -30,77 +28,87 @@ const solutions: Solution[] = [
   {
     icon: <Bot className="h-8 w-8" />,
     title: "Agents IA – Assistants intelligents",
-    description: "Offrez-vous des assistants IA dédiés à l'optimisation des tâches vétérinaires",
+    description:
+      "Offrez-vous des assistants IA dédiés à l'optimisation des tâches vétérinaires",
     features: [
       "Rédaction de rapports, de mails et de factures",
       "Gestion des publications sur les réseaux sociaux",
-      "Aide au diagnostic"
+      "Aide au diagnostic",
     ],
-    href: "/solutions#agents-ia"
+    href: "/solutions#agents-ia",
   },
   {
     icon: <Share2 className="h-8 w-8" />,
     title: "Plateforme collaborative",
-    description: "Profitez d'une interface commune pour mutualiser les coûts et partager vos assistants IA personnalisés ainsi que des outils pensés pour répondre aux besoins communs des vétérinaires.",
+    description:
+      "Profitez d'une interface commune pour mutualiser les coûts et partager vos assistants IA personnalisés ainsi que des outils pensés pour répondre aux besoins communs des vétérinaires.",
     features: [
       "Partage d'assistants IA",
       "Mutualisation des coûts",
-      "Outils collaboratifs"
+      "Outils collaboratifs",
     ],
-    href: "/solutions#plateforme"
+    href: "/solutions#plateforme",
   },
   {
     icon: <Sparkles className="h-8 w-8" />,
     title: "Digitalisation sur mesure & automatisation personnalisée",
-    description: "Optimisez vos processus avec des applications dédiées et des automatisations adaptées à votre pratique. Vous gagnez en efficacité et en sérénité.",
+    description:
+      "Optimisez vos processus avec des applications dédiées et des automatisations adaptées à votre pratique. Vous gagnez en efficacité et en sérénité.",
     features: [
       "Applications sur mesure",
       "Automatisation des tâches",
-      "Intégration fluide"
+      "Intégration fluide",
     ],
-    href: "/solutions#digitalisation"
-  }
+    href: "/solutions#digitalisation",
+  },
 ];
 
 const values = [
   {
     icon: <Lightbulb className="h-6 w-6" />,
     title: "Innovation",
-    description: "Nous plaçons la technologie au service des vétérinaires pour simplifier leur quotidien."
+    description:
+      "Nous plaçons la technologie au service des vétérinaires pour simplifier leur quotidien.",
   },
   {
     icon: <Heart className="h-6 w-6" />,
     title: "Accompagnement",
-    description: "Un suivi personnalisé et des formations sur mesure pour intégrer chaque solution dans vos pratiques."
+    description:
+      "Un suivi personnalisé et des formations sur mesure pour intégrer chaque solution dans vos pratiques.",
   },
   {
     icon: <Zap className="h-6 w-6" />,
     title: "Productivité",
-    description: "Nous vous fournissons les outils adaptés pour vous redonner du temps et améliorer votre rentabilité."
-  }
+    description:
+      "Nous vous fournissons les outils adaptés pour vous redonner du temps et améliorer votre rentabilité.",
+  },
 ];
 
 const benefits = [
   {
     icon: <Stethoscope className="h-6 w-6" />,
     title: "Diagnostic et traitement assistés",
-    description: "En analysant rapidement des milliers de données médicales, l'IA détecte des signes parfois imperceptibles à l'œil humain. Elle suggère des diagnostics précis et des plans de traitement personnalisés."
+    description:
+      "En analysant rapidement des milliers de données médicales, l'IA détecte des signes parfois imperceptibles à l'œil humain. Elle suggère des diagnostics précis et des plans de traitement personnalisés.",
   },
   {
     icon: <Clock className="h-6 w-6" />,
     title: "Optimisation de la gestion",
-    description: "L'IA facilite la gestion quotidienne : planification des rendez-vous, prévision des stocks et fournitures, facturation automatique."
+    description:
+      "L'IA facilite la gestion quotidienne : planification des rendez-vous, prévision des stocks et fournitures, facturation automatique.",
   },
   {
     icon: <FileText className="h-6 w-6" />,
     title: "Génération de contenu",
-    description: "L'IA prend en charge la rédaction rapide de documents : recherches bibliographiques, comptes rendus, mails personnalisés, communication sur les réseaux sociaux."
+    description:
+      "L'IA prend en charge la rédaction rapide de documents : recherches bibliographiques, comptes rendus, mails personnalisés, communication sur les réseaux sociaux.",
   },
   {
     icon: <Database className="h-6 w-6" />,
     title: "Gestion des dossiers",
-    description: "En plus de trier et d'organiser les dossiers médicaux, l'IA peut repérer des signaux d'alerte et mettre en évidence des épidémies locales."
-  }
+    description:
+      "En plus de trier et d'organiser les dossiers médicaux, l'IA peut repérer des signaux d'alerte et mettre en évidence des épidémies locales.",
+  },
 ];
 
 export default function Home() {
@@ -108,18 +116,20 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-secondary-800 to-primary-400 text-white">
-        <div className="absolute inset-0 bg-[url('/src/assets/images/revolution-pratique-veterinaire-innovettech.jpg')] bg-cover bg-center mix-blend-overlay opacity-20" 
-             role="img" 
-             aria-label="Révolutionnez votre pratique vétérinaire avec l'IA - InnoVetTech">
-        </div>
+        <div
+          className="absolute inset-0 bg-[url('/src/assets/images/revolution-pratique-veterinaire-innovettech.jpg')] bg-cover bg-center mix-blend-overlay opacity-20"
+          role="img"
+          aria-label="Révolutionnez votre pratique vétérinaire avec l'IA - InnoVetTech"
+        ></div>
         <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
           <div className="max-w-2xl">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
               Révolutionnez votre pratique vétérinaire avec l'IA
             </h1>
             <p className="text-lg text-primary-50 mb-8">
-              InnoVetTech, la plateforme d'intelligence artificielle conçue par et pour les vétérinaires 
-              français, vous aide à gagner du temps, à améliorer vos soins et à booster votre rentabilité.
+              InnoVetTech, la plateforme d'intelligence artificielle conçue par
+              et pour les vétérinaires français, vous aide à gagner du temps, à
+              améliorer vos soins et à booster votre rentabilité.
             </p>
             <div className="flex flex-wrap gap-4">
               <NavLink
@@ -147,8 +157,9 @@ export default function Home() {
               Bienvenue chez InnoVetTech
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Nos solutions d'intelligence artificielle et nos outils innovants allègent vos tâches 
-              administratives pour vous permettre de vous concentrer sur l'essentiel : les soins aux animaux.
+              Nos solutions d'intelligence artificielle et nos outils innovants
+              allègent vos tâches administratives pour vous permettre de vous
+              concentrer sur l'essentiel : les soins aux animaux.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -156,27 +167,36 @@ export default function Home() {
               <div className="absolute top-0 -translate-y-1/2 bg-primary-400 p-4 rounded-xl">
                 <FileText className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-secondary-700">Création de contenu</h3>
+              <h3 className="mt-4 text-xl font-semibold text-secondary-700">
+                Création de contenu
+              </h3>
               <p className="mt-4 text-gray-600">
-                Rédaction de comptes rendus, facturation, recherche documentaire, mails et bien plus encore.
+                Rédaction de comptes rendus, facturation, recherche
+                documentaire, mails et bien plus encore.
               </p>
             </div>
             <div className="relative bg-white p-8 shadow-soft rounded-2xl">
               <div className="absolute top-0 -translate-y-1/2 bg-primary-400 p-4 rounded-xl">
                 <Clock className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-secondary-700">Automatisation des tâches</h3>
+              <h3 className="mt-4 text-xl font-semibold text-secondary-700">
+                Automatisation des tâches
+              </h3>
               <p className="mt-4 text-gray-600">
-                Classement et envoi de dossiers médicaux, relances et gestion administrative simplifiée.
+                Classement et envoi de dossiers médicaux, relances et gestion
+                administrative simplifiée.
               </p>
             </div>
             <div className="relative bg-white p-8 shadow-soft rounded-2xl">
               <div className="absolute top-0 -translate-y-1/2 bg-primary-400 p-4 rounded-xl">
                 <Brain className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-secondary-700">Optimisation du diagnostic</h3>
+              <h3 className="mt-4 text-xl font-semibold text-secondary-700">
+                Optimisation du diagnostic
+              </h3>
               <p className="mt-4 text-gray-600">
-                Aide à l'identification des pathologies, analyse prédictive et gestion intelligente des données.
+                Aide à l'identification des pathologies, analyse prédictive et
+                gestion intelligente des données.
               </p>
             </div>
           </div>
@@ -188,12 +208,18 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-secondary-700 sm:text-4xl">
-              Nos solutions s'adaptent à vos besoins pour améliorer votre productivité
+              Nos solutions s'adaptent à vos besoins pour améliorer votre
+              productivité
             </h2>
           </div>
           <div className="space-y-16">
             {solutions.map((solution, index) => (
-              <div key={index} className={`flex flex-col lg:flex-row gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div
+                key={index}
+                className={`flex flex-col lg:flex-row gap-12 ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
                 <div className="flex-1 lg:pt-8">
                   <div className="flex items-center gap-4 text-primary-400 mb-6">
                     {solution.icon}
@@ -238,16 +264,17 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-neutral-50 p-8 rounded-2xl shadow-soft">
+              <div
+                key={index}
+                className="bg-neutral-50 p-8 rounded-2xl shadow-soft"
+              >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-400 text-white mb-6">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-secondary-700 mb-3">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">
-                  {value.description}
-                </p>
+                <p className="text-gray-600">{value.description}</p>
               </div>
             ))}
           </div>
@@ -259,13 +286,16 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-secondary-700 sm:text-4xl">
-              Pourquoi opter pour l'intelligence artificielle quand on est vétérinaire ?
+              Pourquoi opter pour l'intelligence artificielle quand on est
+              vétérinaire ?
             </h2>
             <p className="mt-6 text-lg text-gray-600">
-              L'intelligence artificielle transforme déjà de nombreux secteurs, y compris la médecine 
-              vétérinaire. En automatisant les diagnostics, en optimisant la gestion des cliniques et 
-              en accélérant la production de contenus, l'IA permet aux vétérinaires de gagner en 
-              efficacité tout en maintenant un niveau de soins élevé.
+              L'intelligence artificielle transforme déjà de nombreux secteurs,
+              y compris la médecine vétérinaire. En automatisant les
+              diagnostics, en optimisant la gestion des cliniques et en
+              accélérant la production de contenus, l'IA permet aux vétérinaires
+              de gagner en efficacité tout en maintenant un niveau de soins
+              élevé.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -277,9 +307,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-secondary-700 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -294,7 +322,8 @@ export default function Home() {
               Prêt à transformer votre pratique ?
             </h2>
             <p className="mt-4 text-lg text-primary-50">
-              Découvrez comment nos solutions peuvent révolutionner votre quotidien.
+              Découvrez comment nos solutions peuvent révolutionner votre
+              quotidien.
             </p>
           </div>
           <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
