@@ -13,13 +13,13 @@ export default function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />
-            <Route path="/tarifs" element={<Pricing />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/a-propos" element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
