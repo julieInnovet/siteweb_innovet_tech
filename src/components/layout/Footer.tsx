@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer className="bg-white px-4 py-8 md:p-8">
       <div className="wrapper">
-        <div className="grid gap-4 lg:grid-cols-3 space-y-4">
+        <div className="flex flex-wrap justify-between gap-4 space-y-4">
           {/* Logo with Text & Links */}
           <div className="flex flex-col gap-4">
             <NavLink
@@ -88,7 +88,7 @@ export default function Footer() {
               Restez informé(e) !
             </h3>
             <p className="text-secondary-500 text-sm">
-              Inscrivez-vous à notre Newsletter pour suivre nos actualités.
+              Suivez notre actualité avec notre newsletter.
             </p>
             <form
               className="flex w-full max-w-96"
@@ -124,7 +124,9 @@ export default function Footer() {
 
         <div className="flex justify-between items-center">
           <span className="text-secondary-500 text-sm">
-            © 2025 <NavLink to="/">Innovet Tech</NavLink>. Tous droits réservés.
+            © 2025 <NavLink to="/">Innovet Tech</NavLink>.
+            <br className="sm:hidden" />
+            Tous droits réservés.
           </span>
 
           {/* Social Medias */}

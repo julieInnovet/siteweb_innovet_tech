@@ -30,8 +30,8 @@ export default function Header() {
           </NavLink>
 
           {/* CTA & Mobile Menu */}
-          <div className="flex items-center lg:order-2">
-            <NavLink to="/contact" className="cta mr-2">
+          <div className="flex items-center gap-2 lg:order-2">
+            <NavLink to="/contact" className="cta hidden md:inline-flex">
               Demander une Démo
             </NavLink>
 
@@ -82,7 +82,7 @@ export default function Header() {
                     to={item.href}
                     className={({ isActive }) =>
                       isActive
-                        ? "block py-2 pr-4 pl-3 text-sm font-semibold text-white rounded bg-primary-700 hover:text-white lg:bg-transparent lg:text-primary-400 lg:p-0"
+                        ? "block py-2 pr-4 pl-3 text-sm font-semibold text-white rounded bg-primary-700 hover:text-white lg:bg-transparent lg:text-primary-400 lg:hover:text-primary-400 lg:p-0"
                         : "block py-2 pr-4 pl-3 text-sm font-semibold text-secondary-700 border-b border-secondary-100 hover:bg-secondary-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-400 lg:p-0"
                     }
                   >
