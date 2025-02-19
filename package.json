@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
+    "dev": "vite build --watch & vite preview",
     "build": "vite build",
     "lint": "npx mega-linter-runner --flavor cupcake",
     "preview": "vite preview"
