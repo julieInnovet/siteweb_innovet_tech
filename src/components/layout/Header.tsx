@@ -31,15 +31,15 @@ export default function Header() {
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center lg:order-2">
-            <NavLink to="/contact" className="cta">
+            <NavLink to="/contact" className="cta mr-2">
               Demander une Démo
             </NavLink>
 
             <button
-              data-collapse-toggle="mobile-menu-2"
+              data-collapse-toggle="mobile-menu"
               type="button"
               className="inline-flex items-center p-2 ml-1 text-sm text-secondary-500 rounded-lg lg:hidden hover:bg-secondary-100 focus:outline-none focus:ring-2 focus:ring-secondary-200"
-              aria-controls="mobile-menu-2"
+              aria-controls="mobile-menu"
               aria-expanded="false"
             >
               <span className="sr-only">Ouvrir le menu</span>
@@ -73,7 +73,7 @@ export default function Header() {
           {/* Navigation */}
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
-            id="mobile-menu-2"
+            id="mobile-menu"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               {navigation.map((item) => (
@@ -82,7 +82,7 @@ export default function Header() {
                     to={item.href}
                     className={({ isActive }) =>
                       isActive
-                        ? "block py-2 pr-4 pl-3 text-sm font-semibold text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-400 lg:p-0"
+                        ? "block py-2 pr-4 pl-3 text-sm font-semibold text-white rounded bg-primary-700 hover:text-white lg:bg-transparent lg:text-primary-400 lg:p-0"
                         : "block py-2 pr-4 pl-3 text-sm font-semibold text-secondary-700 border-b border-secondary-100 hover:bg-secondary-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-400 lg:p-0"
                     }
                   >

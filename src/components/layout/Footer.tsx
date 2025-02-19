@@ -106,11 +106,14 @@ export default function Footer() {
                   type="email"
                   placeholder="Votre e-mail"
                   required
-                  className="rounded-l-lg"
+                  className="input rounded-l-lg"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <button type="submit" className="rounded-r-lg">
+              <button
+                type="submit"
+                className="bg-primary-400 rounded-r-lg border border-primary-400 font-semibold text-white text-sm text-center px-5 py-3 hover:bg-primary-500"
+              >
                 Inscription
               </button>
             </form>
@@ -123,6 +126,7 @@ export default function Footer() {
           <span className="text-secondary-500 text-sm">
             © 2025 <NavLink to="/">Innovet Tech</NavLink>. Tous droits réservés.
           </span>
+
           {/* Social Medias */}
           <div className="flex justify-center items-center text-secondary-500 gap-6">
             <a href="https://www.facebook.com/people/InnoVet-Tech/61559877454640/">
