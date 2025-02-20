@@ -18,8 +18,8 @@ const navigation: NavItem[] = [
 export default function Header() {
   return (
     <header>
-      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-soft border-secondary-200 px-4 lg:px-6 py-2.5">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+      <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-soft border-secondary-200 px-4 lg:px-6 py-2.5">
+        <div className="flex flex-wrap justify-between items-center wrapper">
           <LogoWithName />
 
           {/* CTA & Mobile Menu */}
@@ -74,9 +74,7 @@ export default function Header() {
                   <NavLink
                     to={item.href}
                     className={({ isActive }) =>
-                      isActive
-                        ? "block py-2 pr-4 pl-3 text-sm font-semibold text-white rounded bg-primary-700 hover:text-white lg:bg-transparent lg:text-primary-400 lg:hover:text-primary-400 lg:p-0"
-                        : "block py-2 pr-4 pl-3 text-sm font-semibold text-secondary-700 border-b border-secondary-100 hover:bg-secondary-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-400 lg:p-0"
+                      isActive ? "menu-item active" : "menu-item inactive"
                     }
                   >
                     {item.title}

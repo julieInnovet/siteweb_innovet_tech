@@ -14,14 +14,74 @@
   @apply max-w-screen-xl mx-auto;
 }
 
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
 a {
   @apply hover:text-primary-400;
+}
+
+hr {
+  @apply mx-auto my-6 h-0 border-t border-secondary-200;
 }
 
 .cta {
   @apply rounded-full bg-primary-400 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:bg-primary-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2;
 }
 
-.input {
-  @apply text-gray-900 text-sm p-3 pl-10 border w-full focus:ring-primary-500 focus:border-primary-500 focus:outline-none;
+.input-group {
+  @apply relative w-full;
+
+  & .prefix {
+    @apply absolute flex pl-3 items-center left-0 bottom-0 top-0;
+
+    & svg {
+      @apply flex size-5 text-secondary-500;
+    }
+  }
+
+  input {
+    @apply text-gray-900 text-sm p-3 pl-10 border w-full focus:ring-primary-500 focus:border-primary-500 focus:outline-none;
+  }
+}
+
+header nav {
+  & .menu-item {
+    @apply block py-2 pr-4 pl-3 text-sm font-semibold rounded hover:text-white lg:hover:text-primary-400 lg:p-0;
+
+    &.active {
+      @apply text-white bg-primary-700 lg:bg-transparent lg:text-primary-400;
+    }
+
+    &.inactive {
+      @apply text-secondary-700 border-b border-secondary-100 hover:text-white hover:bg-primary-500 lg:hover:bg-transparent lg:hover:text-primary-400 lg:border-0;
+    }
+  }
+}
+
+footer {
+  & .footer-section {
+    @apply flex flex-col gap-4;
+
+    & h3 {
+      @apply text-secondary-900 font-semibold text-lg;
+    }
+
+    & .contact-item {
+      @apply flex gap-2;
+
+      & svg {
+        @apply flex size-5 text-primary-500;
+      }
+    }
+  }
+
+  & .socials {
+    @apply flex justify-center items-center text-secondary-500 gap-6;
+
+    & svg {
+      @apply size-5;
+    }
+  }
 }

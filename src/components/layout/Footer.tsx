@@ -13,14 +13,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white px-4 py-8 md:p-8">
+    <footer className="bg-white text-secondary-500 text-sm  px-4 py-8 md:p-8">
       <div className="wrapper">
         <div className="flex flex-wrap justify-between gap-4 space-y-4">
           {/* Logo with Text & Links */}
-          <div className="flex flex-col gap-4">
+          <div className="footer-section">
             <LogoWithName />
 
-            <ul className="flex flex-col text-secondary-500 text-sm gap-4">
+            <ul className="flex flex-col gap-4">
               <li>
                 <NavLink to="/cgv">Conditions Générales de Vente</NavLink>
               </li>
@@ -37,70 +37,54 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-secondary-900 font-semibold text-lg">
-              Contact
-            </h3>
-            <div className="flex gap-2">
-              <MapPin className="size-5 text-primary-500" />
-              <a
-                href="https://g.co/kgs/wUyfYD1"
-                className="text-secondary-500 text-sm"
-              >
+          <div className="footer-section">
+            <h3>Contact</h3>
+            <div className="contact-item">
+              <MapPin />
+              <a href="https://g.co/kgs/wUyfYD1">
                 241 Route du Bois de la Pierre 31370 Bérat
               </a>
             </div>
 
-            <div className="flex gap-2">
-              <Phone className="size-5 text-primary-500" />
-              <a href="tel:+33670494614" className="text-secondary-500 text-sm">
-                06 70 49 46 14
-              </a>
+            <div className="contact-item">
+              <Phone />
+              <a href="tel:+33670494614">06 70 49 46 14</a>
             </div>
 
-            <div className="flex gap-2">
-              <Mail className="size-5 text-primary-500" />
-              <a
-                href="mailto:contact@innovet-tech.com"
-                className="text-secondary-500 text-sm"
-              >
+            <div className="contact-item">
+              <Mail />
+              <a href="mailto:contact@innovet-tech.com">
                 contact@innovet-tech.com
               </a>
             </div>
 
-            <div className="flex gap-2">
-              <Clock className="size-5 text-primary-500" />
-              <p className="text-secondary-500 text-sm">
-                Lun – Ven: 9h00 – 18h00
-              </p>
+            <div className="contact-item">
+              <Clock />
+              <p>Lun – Ven: 9h00 – 18h00</p>
             </div>
           </div>
 
           {/* Newsletter Form */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-secondary-900 font-semibold text-lg">
-              Restez informé(e) !
-            </h3>
-            <p className="text-secondary-500 text-sm">
-              Suivez notre actualité avec notre newsletter.
-            </p>
+          <div className="footer-section">
+            <h3>Restez informé(e) !</h3>
+            <p>Suivez notre actualité avec notre newsletter.</p>
             <form
               className="flex w-full max-w-96"
               onSubmit={submitNewsletterForm}
             >
-              <div className="relative w-full">
+              <div className="input-group">
                 <label htmlFor="email" className="sr-only">
                   Adresse e-mail
                 </label>
-                <div className="absolute flex pl-3 items-center left-0 bottom-0 top-0">
-                  <Mail className="size-5 text-secondary-500" />
+                <div className="prefix">
+                  <Mail />
                 </div>
                 <input
                   id="email"
                   type="email"
                   placeholder="Votre e-mail"
                   required
-                  className="input rounded-l-lg"
+                  className="rounded-l-lg"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -114,22 +98,22 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="mx-auto my-6 h-0 border-t border-secondary-200" />
+        <hr />
 
         <div className="flex justify-between items-center">
-          <span className="text-secondary-500 text-sm">
+          <span>
             © 2025 <NavLink to="/">Innovet Tech</NavLink>.
             <br className="sm:hidden" />
             Tous droits réservés.
           </span>
 
           {/* Social Medias */}
-          <div className="flex justify-center items-center text-secondary-500 gap-6">
+          <div className="socials">
             <a href="https://www.facebook.com/people/InnoVet-Tech/61559877454640/">
-              <Facebook className="size-5" />
+              <Facebook />
             </a>
             <a href="https://www.linkedin.com/company/innovet-tech/">
-              <Linkedin className="size-5" />
+              <Linkedin />
             </a>
           </div>
         </div>

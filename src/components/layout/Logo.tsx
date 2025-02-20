@@ -1,18 +1,8 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo_short.png";
 
-export interface LogoProps {
-  className?: string;
-}
-
-export function Logo(props: LogoProps) {
-  return (
-    <img
-      src={logo}
-      alt="Innovet Tech"
-      className={props.className || "w-auto h-8"}
-    />
-  );
+export function Logo() {
+  return <img src={logo} alt="Innovet Tech" className="w-auto h-8" />;
 }
 
 export function LogoWithName() {
