@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Clock, Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import Logo from "./Logo";
+import { LogoWithName } from "./Logo";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -18,13 +18,7 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between gap-4 space-y-4">
           {/* Logo with Text & Links */}
           <div className="flex flex-col gap-4">
-            <NavLink
-              to="/"
-              className="text-secondary-900 font-semibold text-2xl flex items-center gap-2"
-            >
-              <Logo />
-              Innovet Tech
-            </NavLink>
+            <LogoWithName />
 
             <ul className="flex flex-col text-secondary-500 text-sm gap-4">
               <li>

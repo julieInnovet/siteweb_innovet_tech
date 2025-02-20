@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Logo from "./Logo";
+import { LogoWithName } from "./Logo";
 
 interface NavItem {
   title: string;
@@ -20,14 +20,7 @@ export default function Header() {
     <header>
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-soft border-secondary-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          {/* Logo with Text */}
-          <NavLink
-            to="/"
-            className="text-secondary-900 font-semibold text-2xl flex items-center gap-2"
-          >
-            <Logo />
-            Innovet Tech
-          </NavLink>
+          <LogoWithName />
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-2 lg:order-2">
