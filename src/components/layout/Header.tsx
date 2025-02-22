@@ -24,7 +24,7 @@ export default function Header() {
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-2 lg:order-2">
-            <NavLink to="/contact" className="cta hidden md:inline-flex">
+            <NavLink to="/contact" className=" cta">
               Demander une Démo
             </NavLink>
 

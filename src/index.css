@@ -27,7 +27,11 @@ hr {
 }
 
 .cta {
-  @apply rounded-full bg-primary-400 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:bg-primary-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2;
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary-400 px-5 py-3 text-base font-semibold text-center text-white shadow-soft hover:bg-primary-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400;
+
+  &.light {
+    @apply bg-white text-primary-400 hover:bg-secondary-100 focus-visible:outline-white;
+  }
 }
 
 .input-group {
@@ -58,6 +62,10 @@ header nav {
       @apply text-secondary-700 border-b border-secondary-100 hover:text-white hover:bg-primary-500 lg:hover:bg-transparent lg:hover:text-primary-400 lg:border-0;
     }
   }
+
+  & .cta {
+    @apply hidden text-sm md:inline-flex;
+  }
 }
 
 footer {
@@ -83,5 +91,95 @@ footer {
     & svg {
       @apply size-5;
     }
+  }
+}
+
+section {
+  @apply bg-secondary-50;
+
+  & .wrapper {
+    @apply px-4 py-8 sm:py-16;
+
+    & .title {
+      @apply text-center max-w-screen-md mx-auto mb-8;
+
+      & h2 {
+        @apply font-extrabold text-4xl mb-4 -tracking-wide;
+      }
+
+      & p {
+        @apply text-secondary-400 font-light sm:text-xl;
+      }
+    }
+  }
+}
+
+.card {
+  @apply relative bg-white p-6 shadow-soft rounded-xl hover:scale-105;
+
+  & .icon {
+    @apply absolute top-0 -translate-y-1/2 flex items-center justify-center size-10 bg-primary-100 rounded-xl shadow-soft;
+
+    & svg {
+      @apply block size-5 text-primary-600;
+    }
+  }
+
+  & h3 {
+    @apply font-bold text-xl mb-2;
+  }
+
+  & p {
+    @apply font-light text-secondary-500;
+  }
+}
+
+.solution {
+  @apply grid gap-8 items-center lg:gap-16 md:grid-cols-2;
+
+  &:nth-child(even) {
+    & img {
+      @apply md:order-first;
+    }
+  }
+
+  & .solution-content {
+    @apply space-y-4;
+
+    & .solution-title {
+      @apply flex items-center gap-2;
+
+      & svg {
+        @apply size-7 text-primary-500;
+      }
+
+      & h3 {
+        @apply font-bold text-lg sm:text-2xl;
+      }
+    }
+
+    & p {
+      @apply text-base text-secondary-500 font-normal sm:text-lg;
+    }
+
+    & ul {
+      @apply space-y-4;
+
+      & li {
+        @apply flex gap-2.5 items-center;
+
+        & svg {
+          @apply size-3.5 text-primary-500;
+        }
+
+        & span {
+          @apply font-medium;
+        }
+      }
+    }
+  }
+
+  & img {
+    @apply block object-cover w-full rounded-2xl shadow-soft;
   }
 }
