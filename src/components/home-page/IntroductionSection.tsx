@@ -1,4 +1,26 @@
 import { Brain, Clock, FileText } from "lucide-react";
+import Card from "../layout/Card";
+
+const cards = [
+  {
+    icon: <FileText />,
+    title: "Création de contenu",
+    description:
+      "Rédaction de comptes rendus, facturation, recherche documentaire, mails et bien plus encore.",
+  },
+  {
+    icon: <Clock />,
+    title: "Automatisation des tâches",
+    description:
+      "Classement et envoi de dossiers médicaux, relances et gestion administrative simplifiée.",
+  },
+  {
+    icon: <Brain />,
+    title: "Optimisation du diagnostic",
+    description:
+      "Aide à l'identification des pathologies, analyse prédictive et gestion intelligente des données.",
+  },
+];
 
 export default function IntroductionSection() {
   return (
@@ -14,38 +36,9 @@ export default function IntroductionSection() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-3 pt-5">
-          <div className="card">
-            <div className="icon">
-              <FileText />
-            </div>
-            <h3>Création de contenu</h3>
-            <p>
-              Rédaction de comptes rendus, facturation, recherche documentaire,
-              mails et bien plus encore.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Clock />
-            </div>
-            <h3>Automatisation des tâches</h3>
-            <p>
-              Classement et envoi de dossiers médicaux, relances et gestion
-              administrative simplifiée.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Brain />
-            </div>
-            <h3>Optimisation du diagnostic</h3>
-            <p>
-              Aide à l'identification des pathologies, analyse prédictive et
-              gestion intelligente des données.
-            </p>
-          </div>
+          {cards.map((card) => (
+            <Card key={card.title} {...card} />
+          ))}
         </div>
       </div>
     </section>

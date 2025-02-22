@@ -1,4 +1,26 @@
 import { Heart, Lightbulb, Zap } from "lucide-react";
+import Card from "../layout/Card";
+
+const cards = [
+  {
+    icon: <Lightbulb />,
+    title: "Innovation",
+    description:
+      "Nous plaçons la technologie au service des vétérinaires pour simplifier leur quotidien.",
+  },
+  {
+    icon: <Heart />,
+    title: "Accompagnements",
+    description:
+      "Un suivi personnalisé et des formations sur mesure pour intégrer chaque solution dans vos pratiques.",
+  },
+  {
+    icon: <Zap />,
+    title: "Productivité",
+    description:
+      "Nous vous fournissons les outils adaptés pour vous redonner du temps et améliorer votre rentabilité.",
+  },
+];
 
 export default function ValuesSection() {
   return (
@@ -9,38 +31,9 @@ export default function ValuesSection() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-3 pt-5">
-          <div className="card">
-            <div className="icon">
-              <Lightbulb />
-            </div>
-            <h3>Innovation</h3>
-            <p>
-              Nous plaçons la technologie au service des vétérinaires pour
-              simplifier leur quotidien.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Heart />
-            </div>
-            <h3>Accompagnements</h3>
-            <p>
-              Un suivi personnalisé et des formations sur mesure pour intégrer
-              chaque solution dans vos pratiques.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Zap />
-            </div>
-            <h3>Productivité</h3>
-            <p>
-              Nous vous fournissons les outils adaptés pour vous redonner du
-              temps et améliorer votre rentabilité.
-            </p>
-          </div>
+          {cards.map((card) => (
+            <Card key={card.title} {...card} />
+          ))}
         </div>
       </div>
     </section>

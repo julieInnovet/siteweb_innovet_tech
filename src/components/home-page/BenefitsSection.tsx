@@ -1,4 +1,32 @@
 import { Clock, Database, FileText, Stethoscope } from "lucide-react";
+import Card from "../layout/Card";
+
+const cards = [
+  {
+    icon: <Stethoscope />,
+    title: "Diagnostic et traitement assistés",
+    description:
+      "En analysant rapidement des milliers de données médicales, l'IA détecte des signes parfois imperceptibles à l'œil humain. Elle suggère des diagnostics précis et des plans de traitement personnalisés.",
+  },
+  {
+    icon: <Clock />,
+    title: "Optimisation de la gestion",
+    description:
+      "L'IA facilite la gestion quotidienne : planification des rendez-vous, prévision des stocks et fournitures, facturation automatique.",
+  },
+  {
+    icon: <FileText />,
+    title: "Génération de contenu",
+    description:
+      "L'IA prend en charge la rédaction rapide de documents : recherches bibliographiques, comptes rendus, mails personnalisés, communication sur les réseaux sociaux.",
+  },
+  {
+    icon: <Database />,
+    title: "Gestion des dossiers",
+    description:
+      "En plus de trier et d'organiser les dossiers médicaux, l'IA peut repérer des signaux d'alerte et mettre en évidence des épidémies locales.",
+  },
+];
 
 export default function BenefitsSection() {
   return (
@@ -19,54 +47,9 @@ export default function BenefitsSection() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 pt-5">
-          <div className="card">
-            <div className="icon">
-              <Stethoscope />
-            </div>
-            <h3>Diagnostic et traitement assistés</h3>
-            <p>
-              En analysant rapidement des milliers de données médicales, l'IA
-              détecte des signes parfois imperceptibles à l'œil humain. Elle
-              suggère des diagnostics précis et des plans de traitement
-              personnalisés.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Clock />
-            </div>
-            <h3>Optimisation de la gestion</h3>
-            <p>
-              L'IA facilite la gestion quotidienne : planification des
-              rendez-vous, prévision des stocks et fournitures, facturation
-              automatique.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <FileText />
-            </div>
-            <h3>Génération de contenu</h3>
-            <p>
-              L'IA prend en charge la rédaction rapide de documents : recherches
-              bibliographiques, comptes rendus, mails personnalisés,
-              communication sur les réseaux sociaux.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="icon">
-              <Database />
-            </div>
-            <h3>Gestion des dossiers</h3>
-            <p>
-              En plus de trier et d'organiser les dossiers médicaux, l'IA peut
-              repérer des signaux d'alerte et mettre en évidence des épidémies
-              locales.
-            </p>
-          </div>
+          {cards.map((card) => (
+            <Card key={card.title} {...card} />
+          ))}
         </div>
       </div>
     </section>

@@ -3,6 +3,45 @@ import agents_ia from "../../assets/images/agents_ia.png";
 import collaborative from "../../assets/images/collaborative.jpeg";
 import digital from "../../assets/images/digital.jpeg";
 
+const solutions = [
+  {
+    icon: <Bot />,
+    title: "Agents IA – Assistants intelligents",
+    description:
+      "Offrez-vous des assistants IA dédiés à l'optimisation des tâches vétérinaires.",
+    features: [
+      "Rédaction de rapports, de mails et de factures",
+      "Gestion des publications sur les réseaux sociaux",
+      "Aide au diagnostic",
+    ],
+    image: agents_ia,
+  },
+  {
+    icon: <Share2 />,
+    title: "Plateforme Collaborative",
+    description:
+      "Profitez d'une interface commune pour mutualiser les coûts et partager vos assistants IA personnalisés ainsi que des outils pensés pour répondre aux besoins communs des vétérinaires.",
+    features: [
+      "Partage d'assistants IA",
+      "Mutualisation des coûts",
+      "Outils collaboratifs",
+    ],
+    image: collaborative,
+  },
+  {
+    icon: <Sparkles />,
+    title: "Digitalisation sur Mesure & Automatisation Personnalisée",
+    description:
+      "Optimisez vos processus avec des applications dédiées et des automatisations adaptées à votre pratique. Vous gagnez en efficacité et en sérénité.",
+    features: [
+      "Applications sur mesure",
+      "Automatisation des tâches",
+      "Intégration fluide",
+    ],
+    image: digital,
+  },
+];
+
 export default function SolutionsSection() {
   return (
     <section>
@@ -15,96 +54,27 @@ export default function SolutionsSection() {
         </div>
 
         <div className="flex flex-col gap-8 lg:gap-20">
-          <div className="solution">
-            <div className="solution-content">
-              <div className="solution-title">
-                <Bot />
-                <h3>Agents IA – Assistants intelligents</h3>
+          {solutions.map((solution) => (
+            <div key={solution.title} className="solution">
+              <div className="solution-content">
+                <div className="solution-title">
+                  {solution.icon}
+                  <h3>{solution.title}</h3>
+                </div>
+                <p>{solution.description}</p>
+                <ul>
+                  {solution.features.map((feature) => (
+                    <li key={feature}>
+                      <Stethoscope />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p>
-                Offrez-vous des assistants IA dédiés à l'optimisation des tâches
-                vétérinaires.
-              </p>
-              <ul>
-                <li>
-                  <Stethoscope />
-                  <span>Rédaction de rapports, de mails et de factures</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Gestion des publications sur les réseaux sociaux</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Aide au diagnostic</span>
-                </li>
-              </ul>
+
+              <img src={solution.image} alt={solution.title} />
             </div>
-
-            <img src={agents_ia} alt="Agents IA" />
-          </div>
-
-          <div className="solution">
-            <div className="solution-content">
-              <div className="solution-title">
-                <Share2 />
-                <h3>Plateforme Collaborative</h3>
-              </div>
-              <p>
-                Profitez d'une interface commune pour mutualiser les coûts et
-                partager vos assistants IA personnalisés ainsi que des outils
-                pensés pour répondre aux besoins communs des vétérinaires.
-              </p>
-              <ul>
-                <li>
-                  <Stethoscope />
-                  <span>Partage d'assistants IA</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Mutualisation des coûts</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Outils collaboratifs</span>
-                </li>
-              </ul>
-            </div>
-
-            <img src={collaborative} alt="Plateforme collaborative" />
-          </div>
-
-          <div className="solution">
-            <div className="solution-content">
-              <div className="solution-title">
-                <Sparkles />
-                <h3>
-                  Digitalisation sur Mesure & Automatisation Personnalisée
-                </h3>
-              </div>
-              <p>
-                Optimisez vos processus avec des applications dédiées et des
-                automatisations adaptées à votre pratique. Vous gagnez en
-                efficacité et en sérénité.
-              </p>
-              <ul>
-                <li>
-                  <Stethoscope />
-                  <span>Applications sur mesure</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Automatisation des tâches</span>
-                </li>
-                <li>
-                  <Stethoscope />
-                  <span>Intégration fluide</span>
-                </li>
-              </ul>
-            </div>
-
-            <img src={digital} alt="Digitalisation sur mesure" />
-          </div>
+          ))}
         </div>
       </div>
     </section>
