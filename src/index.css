@@ -11,7 +11,7 @@
 }
 
 html {
-  @apply scroll-smooth scroll-pt-24;
+  @apply scroll-pt-24;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {

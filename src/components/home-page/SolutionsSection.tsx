@@ -30,7 +30,7 @@ export default function SolutionsSection() {
                     </li>
                   ))}
                 </ul>
-                <NavLink to={`/solutions#${solution.id}`} className="cta">
+                <NavLink to={`/solutions#!${solution.id}`} className="cta">
                   En savoir plus
                   <ChevronRight />
                 </NavLink>
