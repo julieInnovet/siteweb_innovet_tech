@@ -10,6 +10,16 @@
   @apply transition-all duration-200 ease-in-out;
 }
 
+html {
+  @apply scroll-smooth scroll-pt-24;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    @apply scroll-auto;
+  }
+}
+
 .wrapper {
   @apply max-w-screen-xl mx-auto;
 }
@@ -135,7 +145,25 @@ section {
 }
 
 .solution {
-  @apply grid gap-8 items-center lg:gap-16 md:grid-cols-2;
+  @apply grid gap-8 lg:gap-16 md:grid-cols-2;
+
+  &.short-solution {
+    @apply items-center;
+
+    & .solution-content {
+      @apply space-y-4;
+    }
+  }
+
+  &.long-solution {
+    & .solution-content {
+      @apply space-y-12;
+    }
+
+    & img {
+      @apply sticky top-24;
+    }
+  }
 
   &:nth-child(even) {
     & img {
@@ -144,18 +172,21 @@ section {
   }
 
   & .solution-content {
-    @apply space-y-4;
-
     & .solution-title {
       @apply flex items-center gap-2;
 
       & svg {
-        @apply size-7 text-primary-500;
+        @apply flex-shrink-0 size-7 text-primary-500;
       }
 
+      & h2,
       & h3 {
-        @apply font-bold text-lg sm:text-2xl;
+        @apply font-bold text-xl sm:text-2xl;
       }
+    }
+
+    & :not(.solution-title) h3 {
+      @apply font-semibold text-lg sm:text-xl;
     }
 
     & p {
@@ -166,10 +197,10 @@ section {
       @apply space-y-4;
 
       & li {
-        @apply flex gap-2.5 items-center;
+        @apply flex gap-2.5 items-start;
 
         & svg {
-          @apply size-3.5 text-primary-500;
+          @apply flex-shrink-0 size-3.5 text-primary-500 mt-1.5;
         }
 
         & span {
