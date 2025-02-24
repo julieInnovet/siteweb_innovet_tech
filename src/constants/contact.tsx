@@ -9,3 +9,6 @@ export const phoneLink = "tel:+33" + phone.slice(1).replace(/ /gm, "");
 export const facebook =
   "https://www.facebook.com/people/InnoVet-Tech/61559877454640/";
 export const linkedin = "https://www.linkedin.com/company/innovet-tech/";
+
+export const demoRequestUrl =
+  "https://outlook.office365.com/book/DmoInnovetTech1@innovet-tech.com/";

@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { LogoWithName } from "./Logo";
+import { ChevronRight } from "lucide-react";
+import { demoRequestUrl } from "../../constants/contact";
 
 interface NavItem {
   title: string;
@@ -23,9 +25,9 @@ export default function Header() {
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-2 lg:order-2">
-            <NavLink to="/contact" className=" cta">
-              Demander une Démo
-            </NavLink>
+            <a href={demoRequestUrl} className="cta">
+              Demander une Démo <ChevronRight className="size-5" />
+            </a>
 
             <button
               data-collapse-toggle="mobile-menu"
@@ -36,7 +38,7 @@ export default function Header() {
             >
               <span className="sr-only">Ouvrir le menu</span>
               <svg
-                className="w-6 h-6"
+                className="size-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +50,7 @@ export default function Header() {
                 ></path>
               </svg>
               <svg
-                className="hidden w-6 h-6"
+                className="hidden size-6"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
