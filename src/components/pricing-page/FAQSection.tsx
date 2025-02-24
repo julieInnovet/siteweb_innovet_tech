@@ -32,13 +32,13 @@ export default function FAQSection() {
         </div>
 
         <div className="grid pt-8 text-left md:gap-16 md:grid-cols-2">
-          <div>
+          <div className="flex flex-col gap-8">
             {faqs.slice(0, faqs.length / 2).map((faq) => (
               <FAQCard key={faq.question} {...faq} />
             ))}
           </div>
 
-          <div>
+          <div className="flex flex-col gap-8">
             {faqs.slice(faqs.length / 2).map((faq) => (
               <FAQCard key={faq.question} {...faq} />
             ))}

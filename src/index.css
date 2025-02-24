@@ -44,6 +44,28 @@ hr {
   }
 }
 
+label {
+  @apply text-secondary-900 font-medium text-sm block mb-2;
+}
+
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+  @apply block text-secondary-900 text-sm p-3 bg-white border border-secondary-300 rounded-lg w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 focus:outline-none;
+}
+
 .input-group {
   @apply relative w-full;
 
@@ -55,8 +77,10 @@ hr {
     }
   }
 
-  input {
-    @apply text-gray-900 text-sm p-3 pl-10 border w-full focus:ring-primary-500 focus:border-primary-500 focus:outline-none;
+  input,
+  select,
+  textarea {
+    @apply pl-10;
   }
 }
 
@@ -93,6 +117,10 @@ footer {
         @apply flex size-5 text-primary-400;
       }
     }
+  }
+
+  & .input-group input {
+    @apply bg-secondary-50 rounded-r-none;
   }
 
   & .socials {

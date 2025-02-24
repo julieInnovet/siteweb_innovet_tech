@@ -7,7 +7,7 @@ interface FAQCardProps {
 
 export default function FAQCard({ question, answer }: FAQCardProps) {
   return (
-    <div className="mb-10">
+    <div>
       <h3 className="flex items-center mb-4 text-lg font-medium text-secondary-900">
         <HelpCircle className="flex-shrink-0 mr-2 size-5 text-primary-400" />
         {question}

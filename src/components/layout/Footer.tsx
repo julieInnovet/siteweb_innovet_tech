@@ -91,7 +91,6 @@ export default function Footer() {
                   type="email"
                   placeholder="Votre e-mail"
                   required
-                  className="rounded-l-lg"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
