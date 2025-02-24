@@ -10,7 +10,6 @@ const navigation: NavItem[] = [
   { title: "Accueil", href: "/" },
   { title: "Nos Solutions", href: "/solutions" },
   { title: "Tarifs", href: "/pricing" },
-  { title: "Blog", href: "/blog" },
   { title: "À Propos", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];
