@@ -144,6 +144,54 @@ section {
   }
 }
 
+.pricing-card {
+  @apply flex flex-col p-6 mx-auto max-w-lg text-center text-secondary-900 bg-white rounded-2xl border border-secondary-100 shadow xl:p-8 hover:scale-105;
+
+  &.highlighted {
+    @apply border-primary-400 shadow-soft;
+  }
+
+  & .highlight {
+    @apply mb-2;
+
+    & span {
+      @apply text-primary-600 bg-primary-100 text-sm px-3 py-1 rounded-full;
+    }
+  }
+
+  & h3 {
+    @apply mb-4 text-2xl font-semibold;
+  }
+
+  & p {
+    @apply font-light text-secondary-500 sm:text-lg;
+  }
+
+  & .price {
+    @apply flex justify-center items-baseline my-8;
+
+    & span:nth-child(1) {
+      @apply mr-2 text-5xl font-extrabold;
+    }
+
+    & span:nth-child(2) {
+      @apply ml-2 text-secondary-500;
+    }
+  }
+
+  & ul {
+    @apply space-y-4 text-left mt-8;
+
+    & li {
+      @apply flex gap-2.5 items-start;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5 text-primary-500 mt-1.5;
+      }
+    }
+  }
+}
+
 .solution {
   @apply grid gap-8 lg:gap-16 md:grid-cols-2;
 

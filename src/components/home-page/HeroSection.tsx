@@ -3,9 +3,9 @@ import CtaButtons from "../layout/CtaButtons";
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-secondary-800 to-primary-400">
-      <div className="wrapper grid lg:gap-8 xl:gap-0 lg:grid-cols-3">
-        <div className="mr-auto place-self-center lg:col-span-2">
+    <section className="relative bg-gradient-to-br from-secondary-800 to-primary-400">
+      <div className="relative wrapper grid items-center justify-center lg:gap-8 xl:gap-0 lg:grid-cols-3">
+        <div className="lg:col-span-2">
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold text-white tracking-tight leading-none md:text-5xl xl:text-6xl lg:mb-6">
             Révolutionnez votre pratique vétérinaire avec l'IA
           </h1>
