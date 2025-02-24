@@ -10,7 +10,7 @@ import {
   Zap,
   BarChart,
 } from "lucide-react";
-import agents_ia from "../assets/images/agents_ia.png";
+import agents_ia from "../assets/images/agents_ia.jpeg";
 import collaborative from "../assets/images/collaborative.jpeg";
 import digital from "../assets/images/digital.jpeg";
 
