@@ -90,7 +90,7 @@ footer {
       @apply flex gap-2;
 
       & svg {
-        @apply flex size-5 text-primary-500;
+        @apply flex size-5 text-primary-400;
       }
     }
   }
@@ -186,7 +186,7 @@ section {
       @apply flex gap-2.5 items-start;
 
       & svg {
-        @apply flex-shrink-0 size-3.5 text-primary-500 mt-1.5;
+        @apply flex-shrink-0 size-3.5 text-primary-400 mt-1.5;
       }
     }
   }
@@ -224,7 +224,7 @@ section {
       @apply flex items-center gap-2;
 
       & svg {
-        @apply flex-shrink-0 size-7 text-primary-500;
+        @apply flex-shrink-0 size-7 text-primary-400;
       }
 
       & h2,
@@ -248,7 +248,7 @@ section {
         @apply flex gap-2.5 items-start;
 
         & svg {
-          @apply flex-shrink-0 size-3.5 text-primary-500 mt-1.5;
+          @apply flex-shrink-0 size-3.5 text-primary-400 mt-1.5;
         }
 
         & span {
@@ -260,5 +260,91 @@ section {
 
   & img {
     @apply block object-cover w-full rounded-2xl shadow-soft;
+  }
+}
+
+.team-member {
+  @apply grid gap-8 items-center lg:gap-16 md:grid-cols-2;
+
+  &:nth-child(even) {
+    & img {
+      @apply md:order-first;
+    }
+  }
+
+  & .team-member-content {
+    @apply space-y-12;
+
+    & h2 {
+      @apply font-bold text-xl sm:text-2xl;
+    }
+
+    & h3 {
+      @apply font-semibold text-lg sm:text-xl;
+
+      &.role {
+        @apply text-primary-400;
+      }
+    }
+
+    & p {
+      @apply text-base text-secondary-500 font-normal sm:text-lg;
+    }
+
+    & ul {
+      @apply space-y-4;
+
+      & li {
+        @apply flex gap-2.5 items-start;
+
+        & svg {
+          @apply flex-shrink-0 size-3.5 text-primary-400 mt-1.5;
+        }
+
+        & span {
+          @apply font-medium;
+        }
+      }
+    }
+  }
+
+  & img {
+    @apply block object-cover w-full rounded-2xl shadow-soft;
+  }
+}
+
+.vision {
+  @apply space-y-4;
+
+  & .vision-title {
+    @apply flex items-center gap-2;
+
+    & svg {
+      @apply flex-shrink-0 size-7 text-primary-400;
+    }
+
+    & h2 {
+      @apply font-bold text-xl sm:text-2xl;
+    }
+  }
+
+  & p {
+    @apply text-base text-secondary-500 font-normal sm:text-lg;
+  }
+
+  & ul {
+    @apply space-y-4;
+
+    & li {
+      @apply flex gap-2.5 items-start;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5 text-primary-400 mt-1.5;
+      }
+
+      & span {
+        @apply font-medium;
+      }
+    }
   }
 }
