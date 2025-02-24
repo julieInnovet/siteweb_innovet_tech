@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Clock, Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { LogoWithName } from "./Logo";
+import {
+  address,
+  addressLink,
+  facebook,
+  linkedin,
+  mail,
+  mailLink,
+  openingHours,
+  phone,
+  phoneLink,
+} from "../../constants/contact";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -41,26 +52,22 @@ export default function Footer() {
             <h3>Contact</h3>
             <div className="contact-item">
               <MapPin />
-              <a href="https://g.co/kgs/wUyfYD1">
-                241 Route du Bois de la Pierre 31370 Bérat
-              </a>
+              <a href={addressLink}>{address}</a>
             </div>
 
             <div className="contact-item">
               <Phone />
-              <a href="tel:+33670494614">06 70 49 46 14</a>
+              <a href={phoneLink}>{phone}</a>
             </div>
 
             <div className="contact-item">
               <Mail />
-              <a href="mailto:contact@innovet-tech.com">
-                contact@innovet-tech.com
-              </a>
+              <a href={mailLink}>{mail}</a>
             </div>
 
             <div className="contact-item">
               <Clock />
-              <p>Lun – Ven: 9h00 – 18h00</p>
+              <p>{openingHours}</p>
             </div>
           </div>
 
@@ -109,10 +116,10 @@ export default function Footer() {
 
           {/* Social Medias */}
           <div className="socials">
-            <a href="https://www.facebook.com/people/InnoVet-Tech/61559877454640/">
+            <a href={facebook}>
               <Facebook />
             </a>
-            <a href="https://www.linkedin.com/company/innovet-tech/">
+            <a href={linkedin}>
               <Linkedin />
             </a>
           </div>
