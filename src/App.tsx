@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
 import { useEffect } from "react";
+import NotFound from "./pages/NotFound";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -38,13 +39,14 @@ export default function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow mt-16">
+        <main className="flex flex-grow mt-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
