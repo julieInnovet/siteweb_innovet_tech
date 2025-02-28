@@ -1,5 +1,5 @@
 import { Heart, Lightbulb, Zap } from "lucide-react";
-import Card from "../layout/Card";
+import CardsSectionLayout from "../layout/ValuesSectionLayout";
 
 const cards = [
   {
@@ -24,18 +24,10 @@ const cards = [
 
 export default function ValuesSection() {
   return (
-    <section>
-      <div className="wrapper">
-        <div className="title">
-          <h2>Les valeurs d'InnoVetTech</h2>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3 pt-5">
-          {cards.map((card) => (
-            <Card key={card.title} {...card} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <CardsSectionLayout
+      cards={cards}
+      title={"Les valeurs d'InnoVetTech"}
+      mdCols={3}
+    />
   );
 }

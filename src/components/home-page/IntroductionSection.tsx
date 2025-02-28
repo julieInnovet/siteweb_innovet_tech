@@ -1,5 +1,5 @@
 import { Brain, Clock, FileText } from "lucide-react";
-import Card from "../layout/Card";
+import CardsSectionLayout from "../layout/ValuesSectionLayout";
 
 const cards = [
   {
@@ -24,23 +24,11 @@ const cards = [
 
 export default function IntroductionSection() {
   return (
-    <section>
-      <div className="wrapper">
-        <div className="title">
-          <h2>Bienvenue chez InnoVetTech</h2>
-          <p>
-            Nos solutions d'intelligence artificielle et nos outils innovants
-            allègent vos tâches administratives pour vous permettre de vous
-            concentrer sur l'essentiel : les soins aux animaux.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3 pt-5">
-          {cards.map((card) => (
-            <Card key={card.title} {...card} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <CardsSectionLayout
+      cards={cards}
+      title="Bienvenue chez InnoVetTech"
+      description="Nos solutions d'intelligence artificielle et nos outils innovants allègent vos tâches administratives pour vous permettre de vous concentrer sur l'essentiel : les soins aux animaux."
+      mdCols={3}
+    />
   );
 }

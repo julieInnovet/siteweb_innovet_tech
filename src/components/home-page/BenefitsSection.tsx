@@ -1,5 +1,5 @@
 import { Clock, Database, FileText, Stethoscope } from "lucide-react";
-import Card from "../layout/Card";
+import CardsSectionLayout from "../layout/ValuesSectionLayout";
 
 const cards = [
   {
@@ -30,28 +30,12 @@ const cards = [
 
 export default function BenefitsSection() {
   return (
-    <section>
-      <div className="wrapper">
-        <div className="title">
-          <h2>
-            Pourquoi opter pour l'intelligence artificielle quand on est
-            vétérinaire ?
-          </h2>
-          <p>
-            L'intelligence artificielle transforme déjà de nombreux secteurs, y
-            compris la médecine vétérinaire. En automatisant les diagnostics, en
-            optimisant la gestion des cliniques et en accélérant la production
-            de contenus, l'IA permet aux vétérinaires de gagner en efficacité
-            tout en maintenant un niveau de soins élevé.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 pt-5">
-          {cards.map((card) => (
-            <Card key={card.title} {...card} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <CardsSectionLayout
+      cards={cards}
+      title="Pourquoi opter pour l'intelligence artificielle quand on est vétérinaire ?"
+      description="L'intelligence artificielle transforme déjà de nombreux secteurs, y compris la médecine vétérinaire. En automatisant les diagnostics, en optimisant la gestion des cliniques et en accélérant la production de contenus, l'IA permet aux vétérinaires de gagner en efficacité tout en maintenant un niveau de soins élevé."
+      mdCols={2}
+      lgCols={4}
+    />
   );
 }

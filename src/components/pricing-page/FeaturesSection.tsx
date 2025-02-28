@@ -1,5 +1,5 @@
 import { Clock, Database, Settings, Shield, Target, Users } from "lucide-react";
-import Card from "../layout/Card";
+import CardsSectionLayout from "../layout/ValuesSectionLayout";
 
 const cards = [
   {
@@ -41,22 +41,11 @@ const cards = [
 
 export default function FeaturesSection() {
   return (
-    <section>
-      <div className="wrapper">
-        <div className="title">
-          <h2>Pourquoi choisir InnoVet Tech ?</h2>
-          <p>
-            Notre technologie s'adapte à votre pratique pour vous offrir une
-            expérience sur mesure et un retour sur investissement rapide.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3 pt-5">
-          {cards.map((card) => (
-            <Card key={card.title} {...card} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <CardsSectionLayout
+      cards={cards}
+      title="Pourquoi choisir InnoVet Tech ?"
+      description="Notre technologie s'adapte à votre pratique pour vous offrir une expérience sur mesure et un retour sur investissement rapide."
+      mdCols={3}
+    />
   );
 }
