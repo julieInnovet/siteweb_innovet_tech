@@ -7,7 +7,7 @@ import FAQSection from "../components/pricing-page/FAQSection";
 
 export default function Pricing() {
   return (
-    <div className="flex flex-col">
+    <>
       <HeroSection />
       <PricingSection />
       <Separator />
@@ -15,6 +15,6 @@ export default function Pricing() {
       <Separator />
       <FAQSection />
       <CtaSection />
-    </div>
+    </>
   );
 }

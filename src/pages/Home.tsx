@@ -8,7 +8,7 @@ import SolutionsSection from "../components/home-page/SolutionsSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <>
       <HeroSection />
       <IntroductionSection />
       <Separator />
@@ -18,6 +18,6 @@ export default function Home() {
       <Separator />
       <BenefitsSection />
       <CtaSection />
-    </div>
+    </>
   );
 }

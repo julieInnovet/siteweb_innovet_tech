@@ -39,7 +39,7 @@ export default function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex flex-grow mt-16">
+        <main className="flex flex-grow flex-col mt-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />

@@ -7,7 +7,7 @@ import CtaSection from "../components/layout/CtaSection";
 
 export default function About() {
   return (
-    <div className="flex flex-col">
+    <>
       <HeroSection />
       <TeamSection />
       <Separator />
@@ -15,6 +15,6 @@ export default function About() {
       <Separator />
       <VisionSection />
       <CtaSection />
-    </div>
+    </>
   );
 }
