@@ -191,6 +191,72 @@ section {
   }
 }
 
+.post-card {
+  @apply p-4 bg-white rounded-2xl border border-secondary-200 shadow-md;
+
+  &:hover {
+    & img {
+      @apply transform scale-125 duration-500;
+    }
+  }
+
+  & .illustration {
+    @apply block rounded-2xl h-48 w-full mb-5 overflow-hidden;
+
+    & img {
+      @apply rounded-2xl inset-0 w-full h-full max-h-full object-cover object-center;
+    }
+  }
+
+  & .information {
+    @apply flex justify-between;
+
+    & .category {
+      @apply w-fit text-primary-600 font-semibold text-xs px-2.5 py-0.5 bg-primary-100 rounded-2xl;
+    }
+
+    & .date-read {
+      @apply flex font-semibold text-secondary-500 text-xs gap-2 items-center;
+
+      & div {
+        @apply flex items-center gap-1.5;
+
+        & svg {
+          @apply flex-shrink-0 size-3.5;
+        }
+      }
+    }
+  }
+
+  & h2 {
+    @apply text-secondary-900 font-bold text-2xl my-2;
+  }
+
+  & p {
+    @apply text-secondary-500 font-light mb-4;
+  }
+
+  & ul {
+    @apply flex gap-2.5 mb-4;
+
+    & li {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5 text-primary-400;
+      }
+    }
+  }
+
+  & .more {
+    @apply inline-flex gap-2 text-primary-400 font-medium items-center hover:underline;
+
+    & svg {
+      @apply size-4;
+    }
+  }
+}
+
 .pricing-card {
   @apply flex flex-col p-6 mx-auto max-w-lg text-center text-secondary-900 bg-white rounded-2xl border border-secondary-100 shadow xl:p-8 hover:scale-105;
 

@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import CGV from "./pages/CGV";
 import LegalMentions from "./pages/LegalMentions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Blog from "./pages/Blog";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cgv" element={<CGV />} />
