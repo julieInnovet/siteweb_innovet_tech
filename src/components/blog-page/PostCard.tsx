@@ -28,17 +28,11 @@ export default function PostCard({
       </NavLink>
 
       <div className="information">
-        <div className="category">{category}</div>
-        <div className="date-read">
-          <div>
-            <Calendar />
-            {date}
-          </div>
-          <div>
-            <Clock />
-            {readTime}
-          </div>
-        </div>
+        <span className="category">{category}</span>
+        <span className="date">
+          <Calendar />
+          {date}
+        </span>
       </div>
 
       <h2>
@@ -54,9 +48,15 @@ export default function PostCard({
         ))}
       </ul>
 
-      <NavLink to="#" className="more">
-        Lire la suite <ChevronRight />
-      </NavLink>
+      <div className="more">
+        <NavLink to="#">
+          Lire la suite <ChevronRight />
+        </NavLink>
+        <span className="read">
+          <Clock />
+          {readTime}
+        </span>
+      </div>
     </article>
   );
 }

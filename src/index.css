@@ -209,21 +209,17 @@ section {
   }
 
   & .information {
-    @apply flex justify-between;
+    @apply flex gap-4 justify-between items-center;
 
     & .category {
       @apply w-fit text-primary-600 font-semibold text-xs px-2.5 py-0.5 bg-primary-100 rounded-2xl;
     }
 
-    & .date-read {
-      @apply flex font-semibold text-secondary-500 text-xs gap-2 items-center;
+    & .date {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
 
-      & div {
-        @apply flex items-center gap-1.5;
-
-        & svg {
-          @apply flex-shrink-0 size-3.5;
-        }
+      & svg {
+        @apply flex-shrink-0 size-3.5;
       }
     }
   }
@@ -249,10 +245,22 @@ section {
   }
 
   & .more {
-    @apply inline-flex gap-2 text-primary-400 font-medium items-center hover:underline;
+    @apply flex gap-4 items-center;
 
-    & svg {
-      @apply size-4;
+    & a {
+      @apply inline-flex gap-2 text-primary-400 font-medium items-center hover:underline;
+
+      & svg {
+        @apply size-4;
+      }
+    }
+
+    & .read {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5;
+      }
     }
   }
 }
