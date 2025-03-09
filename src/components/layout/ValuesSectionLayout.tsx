@@ -15,6 +15,9 @@ export default function CardsSectionLayout({
   mdCols = -1,
   lgCols = -1,
 }: CardsSectionLayoutProps) {
+  // Let's list out classes for TW pickup:
+  //
+  // !md:grid-cols-3 md:grid-cols-3
   return (
     <section>
       <div className="wrapper">
