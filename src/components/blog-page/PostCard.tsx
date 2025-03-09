@@ -1,4 +1,4 @@
-import { Calendar, ChevronRight, Clock, Tag } from "lucide-react";
+import { Calendar, ChevronRight, Clock, FileImage, Tag } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 interface PostCardProps {
@@ -57,6 +57,56 @@ export default function PostCard({
           {readTime}
         </span>
       </div>
+    </article>
+  );
+}
+
+export function LoadingPostCard() {
+  return (
+    <article role="status" className="post-card animate-pulse">
+      <div className="flex items-center justify-center bg-secondary-300 rounded-2xl h-48 w-full mb-5">
+        <FileImage className="size-10 text-secondary-200" />
+      </div>
+
+      <div className="information">
+        <span className="category">
+          <div className="h-3 w-32 my-0.5"></div>
+        </span>
+        <span className="date">
+          <Calendar />
+          <div className="h-2 bg-secondary-200 rounded-full w-20"></div>
+        </span>
+      </div>
+
+      <h2>
+        <div className="h-6 bg-secondary-200 rounded-full w-96 my-4"></div>
+      </h2>
+      <p>
+        <div className="h-2 bg-secondary-200 rounded-full my-4"></div>
+        <div className="h-2 bg-secondary-200 rounded-full max-w-[340px] my-4"></div>
+        <div className="h-2 bg-secondary-200 rounded-full max-w-[380px] my-4"></div>
+      </p>
+
+      <ul className="my-6">
+        {[1, 2, 3].map((tag) => (
+          <li key={tag}>
+            <Tag />{" "}
+            <div className="h-2 bg-secondary-200 rounded-full w-20"></div>
+          </li>
+        ))}
+      </ul>
+
+      <div className="more my-6">
+        <NavLink to="#">
+          <div className="h-4 bg-primary-200 rounded-full w-28"></div>
+        </NavLink>
+        <span className="read">
+          <Clock />
+          <div className="h-2 bg-secondary-200 rounded-full w-10"></div>
+        </span>
+      </div>
+
+      <span className="sr-only">Chargement...</span>
     </article>
   );
 }

@@ -1,13 +1,14 @@
 import { Filter, Search } from "lucide-react";
-import { posts } from "../../constants/mock-posts";
-import PostCard from "./PostCard";
+import PostCard, { LoadingPostCard } from "./PostCard";
 import { useState } from "react";
+import useBlogPosts, { Post } from "../../hooks/useBlogPosts";
 
 function matchesQuery(text: string, searchQuery: string) {
   return text.toLowerCase().includes(searchQuery.toLowerCase());
 }
 
 export default function PostsSection() {
+  const { posts, loading } = useBlogPosts();
   const categories = posts
     .map((post) => post.category)
     .filter((cat, idx, categories) => categories.indexOf(cat) == idx);
@@ -43,6 +44,7 @@ export default function PostsSection() {
                 placeholder="Rechercher un article"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                disabled={loading}
               />
             </div>
           </div>
@@ -60,6 +62,7 @@ export default function PostsSection() {
                 name="category"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
+                disabled={loading}
               >
                 <option value="all">Toutes les catégories</option>
                 {categories.map((category, idx) => (
@@ -72,7 +75,9 @@ export default function PostsSection() {
           </div>
 
           <div className="text-sm text-secondary-600">
-            {filteredPosts.length == 0
+            {loading
+              ? "Chargement..."
+              : filteredPosts.length == 0
               ? "Aucun résultats"
               : filteredPosts.length == 1
               ? "1 résultat"
@@ -81,12 +86,45 @@ export default function PostsSection() {
         </div>
 
         {/* Posts */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredPosts.map((post) => (
-            <PostCard key={post.id} {...post} />
-          ))}
-        </div>
+        {loading ? (
+          <LoadingPosts />
+        ) : filteredPosts.length > 0 ? (
+          <Posts posts={filteredPosts} />
+        ) : (
+          <NoPosts />
+        )}
       </div>
     </section>
+  );
+}
+
+function Posts({ posts }: { posts: Post[] }) {
+  return (
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.map((post) => (
+        <PostCard key={post.id} {...post} />
+      ))}
+    </div>
+  );
+}
+
+function LoadingPosts() {
+  return (
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {[1, 2, 3].map((id) => (
+        <LoadingPostCard key={id} />
+      ))}
+    </div>
+  );
+}
+
+function NoPosts() {
+  return (
+    <div className="text-center">
+      <h2 className="text-3xl font-bold mb-4">Aucun article trouvé</h2>
+      <p className="text-lg text-secondary-600">
+        Désolé, aucun article ne correspond à votre recherche.
+      </p>
+    </div>
   );
 }

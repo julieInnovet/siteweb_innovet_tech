@@ -1,4 +1,17 @@
-export const posts = [
+import { useState } from "react";
+
+export interface Post {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  date: string;
+  readTime: string;
+  imageUrl: string;
+  tags: string[];
+}
+
+const mockPosts: Post[] = [
   {
     id: 1,
     title: "L'IA révolutionne le diagnostic vétérinaire",
@@ -55,3 +68,15 @@ export const posts = [
     tags: ["Données", "Prévention", "Suivi"],
   },
 ];
+
+export default function useBlogPosts() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setPosts(mockPosts);
+    setLoading(false);
+  }, 5000);
+
+  return { posts, loading };
+}
