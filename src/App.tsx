@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import NotFound from "./pages/NotFound";
 import CGV from "./pages/CGV";
 import LegalMentions from "./pages/LegalMentions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cgv" element={<CGV />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/legal-mentions" element={<LegalMentions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

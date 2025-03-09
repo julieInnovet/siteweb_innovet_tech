@@ -36,7 +36,9 @@ export default function Footer() {
                 <NavLink to="/cgv">Conditions Générales de Vente</NavLink>
               </li>
               <li>
-                <NavLink to="/personal-data">Données Personnelles</NavLink>
+                <NavLink to="/privacy-policy">
+                  Politique de Confidentialité
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/legal-mentions">Mentions Légales</NavLink>

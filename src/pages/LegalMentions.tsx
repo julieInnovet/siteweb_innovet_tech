@@ -120,8 +120,8 @@ export default function LegalMentions() {
               Pour plus d'informations en matière de protection des données à
               caractère personnel, se reporter à la Charte en matière de
               protection des données à caractère personnel du site{" "}
-              <NavLink to="/personal-data">
-                https://www.innovet-tech.com/personal-data
+              <NavLink to="/privacy-policy">
+                https://www.innovet-tech.com/privacy-policy
               </NavLink>
               .
             </p>
