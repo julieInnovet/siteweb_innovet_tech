@@ -152,7 +152,7 @@ section {
 }
 
 .card {
-  @apply relative bg-white p-6 shadow-soft rounded-xl hover:scale-105;
+  @apply relative bg-white p-6 shadow-soft rounded-xl;
 
   & .icon {
     @apply absolute top-0 -translate-y-1/2 flex items-center justify-center size-10 bg-primary-100 rounded-xl shadow-soft lg:size-12;
