@@ -12,8 +12,8 @@ export default function CardsSectionLayout({
   cards,
   title,
   description,
-  mdCols,
-  lgCols,
+  mdCols = -1,
+  lgCols = -1,
 }: CardsSectionLayoutProps) {
   return (
     <section>
@@ -26,8 +26,8 @@ export default function CardsSectionLayout({
         <div
           className={
             "grid gap-8 pt-5" +
-            (mdCols ? ` md:grid-cols-${mdCols}` : "") +
-            (lgCols ? ` lg:grid-cols-${lgCols}` : "")
+            (mdCols > 0 ? ` md:grid-cols-${mdCols}` : "") +
+            (lgCols > 0 ? ` lg:grid-cols-${lgCols}` : "")
           }
         >
           {cards.map((card) => (
