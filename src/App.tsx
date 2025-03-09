@@ -17,6 +17,7 @@ import CGV from "./pages/CGV";
 import LegalMentions from "./pages/LegalMentions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Blog from "./pages/Blog";
+import Admin from "./pages/Admin";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ export default function App() {
             <Route path="/cgv" element={<CGV />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/legal-mentions" element={<LegalMentions />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
