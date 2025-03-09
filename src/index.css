@@ -171,6 +171,22 @@ section {
   }
 }
 
+.conditions {
+  @apply space-y-8 text-pretty text-secondary-500 font-light;
+
+  & div {
+    @apply space-y-2;
+  }
+
+  & h3 {
+    @apply font-semibold text-lg text-secondary-900;
+  }
+
+  & ul {
+    @apply list-disc list-inside ms-4;
+  }
+}
+
 .pricing-card {
   @apply flex flex-col p-6 mx-auto max-w-lg text-center text-secondary-900 bg-white rounded-2xl border border-secondary-100 shadow xl:p-8 hover:scale-105;
 
