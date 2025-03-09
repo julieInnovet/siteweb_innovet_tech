@@ -211,8 +211,8 @@ export default function ContactSection() {
                 </div>
                 <p className="text-sm text-secondary-500 mt-4">
                   En soumettant ce formulaire, vous acceptez notre{" "}
-                  <NavLink to="/policy" className="text-primary-600">
-                    politique de confidentialité
+                  <NavLink to="/privacy-policy" className="text-primary-600">
+                    Politique de Confidentialité
                   </NavLink>
                   .
                 </p>
