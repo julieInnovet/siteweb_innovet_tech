@@ -185,6 +185,10 @@ section {
   & ul {
     @apply list-disc list-inside ms-4;
   }
+
+  & strong {
+    @apply font-semibold;
+  }
 }
 
 .pricing-card {
