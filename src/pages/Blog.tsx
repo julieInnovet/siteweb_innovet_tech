@@ -6,7 +6,7 @@ export default function Blog() {
   return (
     <>
       <HeroSection />
-      <PostsSection />
+      <PostsSection adminMode={false} />
       <CtaSection />
     </>
   );

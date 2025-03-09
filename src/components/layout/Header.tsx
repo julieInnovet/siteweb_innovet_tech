@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { LogoWithName } from "./Logo";
 import { ChevronRight } from "lucide-react";
 import { demoRequestUrl } from "../../constants/contact";
+import useSession from "../../hooks/useSession";
 
 interface NavItem {
   title: string;
@@ -18,6 +19,8 @@ const navigation: NavItem[] = [
 ];
 
 export default function Header() {
+  const { session, signOut } = useSession();
+
   return (
     <header>
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-soft border-secondary-200 px-4 lg:px-6 py-2.5">
@@ -26,9 +29,15 @@ export default function Header() {
 
           {/* CTA & Mobile Menu */}
           <div className="flex items-center gap-2 lg:order-2">
-            <a href={demoRequestUrl} className="cta">
-              Demander une Démo <ChevronRight className="size-5" />
-            </a>
+            {session ? (
+              <button className="cta" onClick={signOut}>
+                Se déconnecter
+              </button>
+            ) : (
+              <a href={demoRequestUrl} className="cta">
+                Demander une Démo <ChevronRight className="size-5" />
+              </a>
+            )}
 
             <button
               data-collapse-toggle="mobile-menu"

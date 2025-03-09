@@ -76,7 +76,7 @@ export default function useBlogPosts() {
   setTimeout(() => {
     setPosts(mockPosts);
     setLoading(false);
-  }, 5000);
+  }, 1000);
 
   return { posts, loading };
 }

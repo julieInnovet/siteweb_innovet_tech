@@ -1,9 +1,10 @@
 import { Lock, Mail } from "lucide-react";
 import { useState } from "react";
-import supabase from "../../utils/supabase";
 import { Spinner } from "flowbite-react";
+import useSession from "../../hooks/useSession";
 
 export default function Login() {
+  const { signIn } = useSession();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,12 +15,9 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: formData.email,
-      password: formData.password,
-    });
+    const error = await signIn(formData.email, formData.password);
     setLoading(false);
-    setError(error?.message || "");
+    setError(error || "");
   };
 
   const handleChange = (

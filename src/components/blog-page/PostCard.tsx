@@ -1,7 +1,16 @@
-import { Calendar, ChevronRight, Clock, FileImage, Tag } from "lucide-react";
+import {
+  Calendar,
+  ChevronRight,
+  Clock,
+  Edit,
+  FileImage,
+  Tag,
+  Trash,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 interface PostCardProps {
+  adminMode?: boolean;
   id: number;
   title: string;
   description: string;
@@ -13,6 +22,7 @@ interface PostCardProps {
 }
 
 export default function PostCard({
+  adminMode,
   title,
   description,
   category,
@@ -57,6 +67,19 @@ export default function PostCard({
           {readTime}
         </span>
       </div>
+
+      {adminMode && (
+        <div className="admin-actions">
+          <NavLink to="#" className="edit">
+            <Edit />
+            Modifier
+          </NavLink>
+          <NavLink to="#" className="delete">
+            <Trash />
+            Supprimer
+          </NavLink>
+        </div>
+      )}
     </article>
   );
 }

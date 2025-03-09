@@ -151,6 +151,28 @@ section {
   }
 }
 
+& .admin-actions {
+  & a {
+    @apply flex gap-1.5 items-center px-4 py-2 text-sm font-medium text-center text-white rounded-2xl focus:ring-4 focus:outline-none;
+
+    & svg {
+      @apply size-4;
+    }
+  }
+
+  & .create {
+    @apply bg-green-700 hover:bg-green-800 focus:ring-green-300;
+  }
+
+  & .delete {
+    @apply bg-red-700 hover:bg-red-800 focus:ring-red-300;
+  }
+
+  & .edit {
+    @apply bg-blue-700 hover:bg-blue-800 focus:ring-blue-300;
+  }
+}
+
 .card {
   @apply relative bg-white p-6 shadow-soft rounded-xl;
 
@@ -262,6 +284,10 @@ section {
         @apply flex-shrink-0 size-3.5;
       }
     }
+  }
+
+  & .admin-actions {
+    @apply mt-4 flex gap-4 items-center justify-around;
   }
 }
 
