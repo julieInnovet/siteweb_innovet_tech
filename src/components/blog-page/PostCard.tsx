@@ -79,7 +79,7 @@ export function LoadingPostCard() {
       </div>
 
       <h2>
-        <div className="h-6 bg-secondary-200 rounded-full w-96 my-4"></div>
+        <div className="h-6 bg-secondary-200 rounded-full w-96 max-w-full my-4"></div>
       </h2>
       <p>
         <div className="h-2 bg-secondary-200 rounded-full my-4"></div>
@@ -88,7 +88,7 @@ export function LoadingPostCard() {
       </p>
 
       <ul className="my-6">
-        {[1, 2, 3].map((tag) => (
+        {[1, 2].map((tag) => (
           <li key={tag}>
             <Tag />{" "}
             <div className="h-2 bg-secondary-200 rounded-full w-20"></div>
