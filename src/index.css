@@ -217,7 +217,7 @@ section {
   @apply p-4 bg-white rounded-2xl border border-secondary-200 shadow-md;
 
   &:hover {
-    & img {
+    & object {
       @apply transform scale-125 duration-500;
     }
   }
@@ -225,8 +225,13 @@ section {
   & .illustration {
     @apply block rounded-2xl h-48 w-full mb-5 overflow-hidden;
 
-    & img {
-      @apply rounded-2xl inset-0 w-full h-full max-h-full object-cover object-center;
+    & object {
+      @apply relative float-left block rounded-2xl inset-0 w-full h-full max-h-full object-cover object-center;
+
+      &::after {
+        @apply absolute inset-0 bg-gradient-to-br from-secondary-800 to-primary-400 opacity-50;
+        content: "";
+      }
     }
   }
 
@@ -494,4 +499,8 @@ section {
       }
     }
   }
+}
+
+.w-md-editor-text {
+  @apply h-full;
 }

@@ -3,6 +3,7 @@ import PostCard, { LoadingPostCard } from "./PostCard";
 import { useState } from "react";
 import useBlogPosts, { Post } from "../../hooks/useBlogPosts";
 import { NavLink } from "react-router-dom";
+import { PostCardMode } from "./PostCardMode";
 
 export interface PostsSectionProps {
   adminMode: boolean;
@@ -100,7 +101,7 @@ export default function PostsSection({ adminMode, title }: PostsSectionProps) {
 
           {adminMode && (
             <div className="admin-actions">
-              <NavLink to="#" className="create">
+              <NavLink to="new-post" className="create">
                 <Plus />
                 Nouvel article
               </NavLink>
@@ -125,7 +126,11 @@ function Posts({ adminMode, posts }: { adminMode: boolean; posts: Post[] }) {
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <PostCard key={post.id} adminMode={adminMode} {...post} />
+        <PostCard
+          key={post.id}
+          mode={adminMode ? PostCardMode.Admin : PostCardMode.Default}
+          {...post}
+        />
       ))}
     </div>
   );

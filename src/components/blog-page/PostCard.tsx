@@ -8,9 +8,10 @@ import {
   Trash,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { PostCardMode } from "./PostCardMode";
 
 interface PostCardProps {
-  adminMode?: boolean;
+  mode?: PostCardMode;
   id: number;
   title: string;
   description: string;
@@ -22,7 +23,7 @@ interface PostCardProps {
 }
 
 export default function PostCard({
-  adminMode,
+  mode = PostCardMode.Default,
   title,
   description,
   category,
@@ -33,8 +34,11 @@ export default function PostCard({
 }: PostCardProps) {
   return (
     <article className="post-card">
-      <NavLink to="#" className="illustration">
-        <img src={imageUrl} alt="Illustration du post" />
+      <NavLink
+        to={mode == PostCardMode.Preview ? "#" : "#"}
+        className="illustration"
+      >
+        <object data={imageUrl} type="image/png"></object>
       </NavLink>
 
       <div className="information">
@@ -59,7 +63,7 @@ export default function PostCard({
       </ul>
 
       <div className="more">
-        <NavLink to="#">
+        <NavLink to={mode == PostCardMode.Preview ? "#" : "#"}>
           Lire la suite <ChevronRight />
         </NavLink>
         <span className="read">
@@ -68,7 +72,7 @@ export default function PostCard({
         </span>
       </div>
 
-      {adminMode && (
+      {mode == PostCardMode.Admin && (
         <div className="admin-actions">
           <NavLink to="#" className="edit">
             <Edit />
