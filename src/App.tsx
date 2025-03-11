@@ -18,6 +18,7 @@ import LegalMentions from "./pages/LegalMentions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
+import NewPost from "./pages/NewPost";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -46,16 +47,20 @@ export default function App() {
         <Header />
         <main className="flex flex-grow flex-col mt-16">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/solutions" element={<Solutions />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cgv" element={<CGV />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/legal-mentions" element={<LegalMentions />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route index element={<Home />} />
+            <Route path="solutions" element={<Solutions />} />
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="cgv" element={<CGV />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="legal-mentions" element={<LegalMentions />} />
+            <Route path="admin">
+              <Route index element={<Admin />} />
+              <Route path="new-post" element={<NewPost />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

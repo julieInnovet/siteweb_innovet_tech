@@ -1,8 +1,10 @@
 import { Filter, Plus, Search } from "lucide-react";
 import PostCard, { LoadingPostCard } from "./PostCard";
 import { useState } from "react";
-import useBlogPosts, { Post } from "../../hooks/useBlogPosts";
+import useBlogPosts from "../../hooks/useBlogPosts";
 import { NavLink } from "react-router-dom";
+import { PostCardMode } from "../../types/PostCardMode";
+import { BlogPost } from "../../types/BlogPost";
 
 export interface PostsSectionProps {
   adminMode: boolean;
@@ -100,7 +102,7 @@ export default function PostsSection({ adminMode, title }: PostsSectionProps) {
 
           {adminMode && (
             <div className="admin-actions">
-              <NavLink to="#" className="create">
+              <NavLink to="new-post" className="create">
                 <Plus />
                 Nouvel article
               </NavLink>
@@ -121,11 +123,21 @@ export default function PostsSection({ adminMode, title }: PostsSectionProps) {
   );
 }
 
-function Posts({ adminMode, posts }: { adminMode: boolean; posts: Post[] }) {
+function Posts({
+  adminMode,
+  posts,
+}: {
+  adminMode: boolean;
+  posts: BlogPost[];
+}) {
   return (
     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <PostCard key={post.id} adminMode={adminMode} {...post} />
+        <PostCard
+          key={post.id}
+          mode={adminMode ? PostCardMode.Admin : PostCardMode.Default}
+          post={post}
+        />
       ))}
     </div>
   );

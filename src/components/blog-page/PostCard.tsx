@@ -8,50 +8,47 @@ import {
   Trash,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { PostCardMode } from "../../types/PostCardMode";
+import { readingTime } from "../../utils/reading";
+import { BlogPost } from "../../types/BlogPost";
 
 interface PostCardProps {
-  adminMode?: boolean;
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  date: string;
-  readTime: string;
-  imageUrl: string;
-  tags: string[];
+  mode?: PostCardMode;
+  post: BlogPost;
 }
 
 export default function PostCard({
-  adminMode,
-  title,
-  description,
-  category,
-  date,
-  readTime,
-  imageUrl,
-  tags,
+  mode = PostCardMode.Default,
+  post,
 }: PostCardProps) {
   return (
     <article className="post-card">
-      <NavLink to="#" className="illustration">
-        <img src={imageUrl} alt="Illustration du post" />
+      <NavLink
+        to={mode == PostCardMode.Preview ? "#" : "#"}
+        className="illustration"
+      >
+        <object data={post.imageUrl} type="image/png"></object>
       </NavLink>
 
       <div className="information">
-        <span className="category">{category}</span>
+        {post.category ? (
+          <span className="category">{post.category}</span>
+        ) : (
+          <span></span>
+        )}
         <span className="date">
           <Calendar />
-          {date}
+          <time>{post.date}</time>
         </span>
       </div>
 
       <h2>
-        <NavLink to="#">{title}</NavLink>
+        <NavLink to="#">{post.title}</NavLink>
       </h2>
-      <p>{description}</p>
+      <p>{post.description}</p>
 
       <ul>
-        {tags.map((tag) => (
+        {post.tags.map((tag) => (
           <li key={tag}>
             <Tag /> {tag}
           </li>
@@ -59,16 +56,16 @@ export default function PostCard({
       </ul>
 
       <div className="more">
-        <NavLink to="#">
+        <NavLink to={mode == PostCardMode.Preview ? "#" : "#"}>
           Lire la suite <ChevronRight />
         </NavLink>
         <span className="read">
           <Clock />
-          {readTime}
+          {readingTime(post.article)}
         </span>
       </div>
 
-      {adminMode && (
+      {mode == PostCardMode.Admin && (
         <div className="admin-actions">
           <NavLink to="#" className="edit">
             <Edit />
