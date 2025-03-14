@@ -4,7 +4,7 @@ import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 import PostCard from "../components/blog-page/PostCard";
 import { PostCardMode } from "../types/PostCardMode";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Ban, Save } from "lucide-react";
 import { TagsInput } from "react-tag-input-component";
 import Separator from "../components/layout/Separator";
@@ -12,6 +12,8 @@ import { imageFile2Url } from "../utils/image";
 import Post from "./Post";
 import useBlogPosts from "../hooks/useBlogPosts";
 import { Spinner } from "flowbite-react";
+import { SuccessModal } from "../components/layout/Modal";
+import { Modal } from "flowbite";
 
 interface NewPostState {
   title: string;
@@ -24,7 +26,7 @@ interface NewPostState {
 
 export default function NewPost() {
   const { create } = useBlogPosts();
-  const [error, setError] = useState<string | null>("Erreur de test");
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<NewPostState>({
     title: "",
@@ -48,6 +50,9 @@ export default function NewPost() {
     });
     setLoading(false);
     setError(error?.message || null);
+    if (!error) {
+      modal.show();
+    }
   };
 
   const updateFormData = (key: string, value: string | string[]) => {
@@ -73,6 +78,21 @@ export default function NewPost() {
   ) => {
     updateFormData(e.target.name, e.target.value);
   };
+
+  const navigate = useNavigate();
+  const modalEl = document.getElementById("successModal");
+  const options = {
+    onHide: () => {
+      setTimeout(() => {
+        navigate("/admin");
+      }, 500);
+    },
+  };
+  const instanceOptions = {
+    id: "modalEl",
+    override: true,
+  };
+  const modal = new Modal(modalEl, options, instanceOptions);
 
   const post = {
     id: -1,
@@ -220,6 +240,13 @@ export default function NewPost() {
             </form>
           </div>
         </section>
+        <SuccessModal
+          id="successModal"
+          title="Article créé avec succès"
+          onClose={() => {
+            modal.hide();
+          }}
+        />
 
         <Separator />
         <section>
