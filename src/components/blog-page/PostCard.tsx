@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import { PostCardMode } from "../../types/PostCardMode";
 import { readingTime } from "../../utils/reading";
 import { BlogPost } from "../../types/BlogPost";
+import { timestampToLocaleDate } from "../../utils/date";
 
 interface PostCardProps {
   mode?: PostCardMode;
@@ -38,7 +39,7 @@ export default function PostCard({
         )}
         <span className="date">
           <Calendar />
-          <time>{post.created_at}</time>
+          <time>{timestampToLocaleDate(post.created_at)}</time>
         </span>
       </div>
 

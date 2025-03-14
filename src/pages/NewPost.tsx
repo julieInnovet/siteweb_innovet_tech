@@ -102,11 +102,7 @@ export default function NewPost() {
     category: formData.category,
     image_url: formData.image_url,
     tags: formData.tags,
-    created_at: new Date().toLocaleDateString("fr-FR", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
+    created_at: new Date().toISOString(),
   };
 
   return AdminRestricted({

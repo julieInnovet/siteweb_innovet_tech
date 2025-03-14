@@ -16,7 +16,7 @@ function matchesQuery(text: string, searchQuery: string) {
 }
 
 export default function PostsSection({ adminMode, title }: PostsSectionProps) {
-  const { posts, loading } = useBlogPosts();
+  const { posts, loading, error } = useBlogPosts();
   const categories = posts
     .map((post) => post.category)
     .filter((cat, idx, categories) => categories.indexOf(cat) == idx);
@@ -113,6 +113,8 @@ export default function PostsSection({ adminMode, title }: PostsSectionProps) {
         {/* Posts */}
         {loading ? (
           <LoadingPosts />
+        ) : error ? (
+          <Error error={error} />
         ) : filteredPosts.length > 0 ? (
           <Posts adminMode={adminMode} posts={filteredPosts} />
         ) : (
@@ -160,6 +162,15 @@ function NoPosts() {
       <p className="text-lg text-secondary-600">
         Désolé, aucun article ne correspond à votre recherche.
       </p>
+    </div>
+  );
+}
+
+function Error({ error }: { error: string }) {
+  return (
+    <div className="text-center">
+      <h2 className="text-3xl font-bold mb-4">Une erreur est survenue</h2>
+      <p className="text-lg text-secondary-600">{error}</p>
     </div>
   );
 }

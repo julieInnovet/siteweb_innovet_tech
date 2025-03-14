@@ -2,6 +2,7 @@ import MDEditor from "@uiw/react-md-editor";
 import { Tag } from "lucide-react";
 import rehypeSanitize from "rehype-sanitize";
 import { BlogPost } from "../types/BlogPost";
+import { timestampToLocaleDate } from "../utils/date";
 
 interface PostProps {
   post: BlogPost;
@@ -13,7 +14,7 @@ export default function Post({ post }: PostProps) {
       <div className="wrapper">
         <div className="title">
           <span>
-            Publié le <time>{post.created_at}</time>
+            Publié le <time>{timestampToLocaleDate(post.created_at)}</time>
           </span>
           <ul>
             {post.tags.map((tag) => (
