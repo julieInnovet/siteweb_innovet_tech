@@ -1,10 +1,13 @@
-export interface BlogPost {
-  id: number;
+export interface BlogPostCreate {
   title: string;
   description: string;
   article: string;
   category: string;
-  date: string;
-  imageUrl: string;
+  image_url: string;
   tags: string[];
+}
+
+export interface BlogPost extends BlogPostCreate {
+  id: number;
+  created_at: string;
 }

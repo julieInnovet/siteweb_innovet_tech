@@ -13,7 +13,7 @@ export default function Post({ post }: PostProps) {
       <div className="wrapper">
         <div className="title">
           <span>
-            Publié le <time>{post.date}</time>
+            Publié le <time>{post.created_at}</time>
           </span>
           <ul>
             {post.tags.map((tag) => (

@@ -27,7 +27,7 @@ export default function PostCard({
         to={mode == PostCardMode.Preview ? "#" : "#"}
         className="illustration"
       >
-        <object data={post.imageUrl} type="image/png"></object>
+        <object data={post.image_url} type="image/png"></object>
       </NavLink>
 
       <div className="information">
@@ -38,7 +38,7 @@ export default function PostCard({
         )}
         <span className="date">
           <Calendar />
-          <time>{post.date}</time>
+          <time>{post.created_at}</time>
         </span>
       </div>
 

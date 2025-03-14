@@ -10,30 +10,44 @@ import { TagsInput } from "react-tag-input-component";
 import Separator from "../components/layout/Separator";
 import { imageFile2Url } from "../utils/image";
 import Post from "./Post";
+import useBlogPosts from "../hooks/useBlogPosts";
+import { Spinner } from "flowbite-react";
 
 interface NewPostState {
   title: string;
   description: string;
   article: string;
   category: string;
-  imageUrl: string;
+  image_url: string;
   tags: string[];
 }
 
 export default function NewPost() {
+  const { create } = useBlogPosts();
+  const [error, setError] = useState<string | null>("Erreur de test");
+  const [loading, setLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<NewPostState>({
     title: "",
     description: "",
     article: "",
     category: "",
-    imageUrl: "",
+    image_url: "",
     tags: [],
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: submit form data to backend
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    const { error } = await create({
+      title: formData.title,
+      description: formData.description,
+      article: formData.article,
+      category: formData.category,
+      image_url: formData.image_url,
+      tags: formData.tags,
+    });
+    setLoading(false);
+    setError(error?.message || null);
   };
 
   const updateFormData = (key: string, value: string | string[]) => {
@@ -43,11 +57,11 @@ export default function NewPost() {
     }));
   };
 
-  const updateImageUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateimage_url = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       imageFile2Url(file).then((url) => {
-        updateFormData("imageUrl", url);
+        updateFormData("image_url", url);
       });
     }
   };
@@ -66,9 +80,9 @@ export default function NewPost() {
     description: formData.description,
     article: formData.article,
     category: formData.category,
-    imageUrl: formData.imageUrl,
+    image_url: formData.image_url,
     tags: formData.tags,
-    date: new Date().toLocaleDateString("fr-FR", {
+    created_at: new Date().toLocaleDateString("fr-FR", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -126,12 +140,12 @@ export default function NewPost() {
                   </div>
 
                   <div>
-                    <label htmlFor="imageUrl">Illustration</label>
+                    <label htmlFor="image_url">Illustration</label>
                     <input
-                      id="imageUrl"
-                      name="imageUrl"
+                      id="image_url"
+                      name="image_url"
                       type="file"
-                      onChange={updateImageUrl}
+                      onChange={updateimage_url}
                       accept="image/*"
                     />
                   </div>
@@ -187,8 +201,9 @@ export default function NewPost() {
                   type="submit"
                   onSubmit={handleSubmit}
                   className="cta text-sm font-medium sm:w-fit"
+                  disabled={loading}
                 >
-                  <Save />
+                  {loading ? <Spinner color="gray" /> : <Save />}
                   Valider
                 </button>
 
@@ -199,6 +214,8 @@ export default function NewPost() {
                   <Ban />
                   Annuler
                 </NavLink>
+
+                {error && <span className="text-red-500">{error}</span>}
               </div>
             </form>
           </div>

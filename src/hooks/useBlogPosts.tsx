@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { BlogPost } from "../types/BlogPost";
+import { BlogPost, BlogPostCreate } from "../types/BlogPost";
+import supabase from "../utils/supabase";
+import { PostgrestSingleResponse } from "@supabase/supabase-js";
 
 export const mockArticle: string =
   "---" +
@@ -501,8 +503,8 @@ const mockPosts: BlogPost[] = [
       "Découvrez comment l'intelligence artificielle améliore la précision des diagnostics en clinique vétérinaire.",
     article: mockArticle,
     category: "Intelligence Artificielle",
-    date: "15 Mars 2024",
-    imageUrl: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7",
+    created_at: "15 Mars 2024",
+    image_url: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7",
     tags: ["IA", "Diagnostic", "Innovation"],
   },
   {
@@ -512,8 +514,8 @@ const mockPosts: BlogPost[] = [
       "Guide pratique pour automatiser les tâches administratives et gagner du temps au quotidien.",
     article: mockArticle,
     category: "Gestion de Cabinet",
-    date: "12 Mars 2024",
-    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+    created_at: "12 Mars 2024",
+    image_url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
     tags: ["Gestion", "Automatisation", "Productivité"],
   },
   {
@@ -523,8 +525,8 @@ const mockPosts: BlogPost[] = [
       "Tour d'horizon des nouvelles technologies d'imagerie pour un diagnostic plus précis.",
     article: mockArticle,
     category: "Innovations Vétérinaires",
-    date: "10 Mars 2024",
-    imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef",
+    created_at: "10 Mars 2024",
+    image_url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef",
     tags: ["Imagerie", "Technologie", "Diagnostic"],
   },
   {
@@ -534,8 +536,8 @@ const mockPosts: BlogPost[] = [
       "Découvrez comment le Dr Martin a transformé sa pratique grâce à nos solutions d'IA.",
     article: mockArticle,
     category: "Témoignages",
-    date: "8 Mars 2024",
-    imageUrl: "https://images.unsplash.com/photo-1537368910025-700350fe46c7",
+    created_at: "8 Mars 2024",
+    image_url: "https://images.unsplash.com/photo-1537368910025-700350fe46c7",
     tags: ["Témoignage", "Expérience", "IA"],
   },
   {
@@ -545,13 +547,19 @@ const mockPosts: BlogPost[] = [
       "Comment l'analyse des données améliore la prévention et le suivi des patients.",
     article: mockArticle,
     category: "Santé Animale",
-    date: "5 Mars 2024",
-    imageUrl: "https://images.unsplash.com/photo-1612531385446-f7e6d131e1d0",
+    created_at: "5 Mars 2024",
+    image_url: "https://images.unsplash.com/photo-1612531385446-f7e6d131e1d0",
     tags: ["Données", "Prévention", "Suivi"],
   },
 ];
 
-export default function useBlogPosts() {
+interface UseBlogPosts {
+  posts: BlogPost[];
+  loading: boolean;
+  create: (post: BlogPostCreate) => Promise<PostgrestSingleResponse<null>>;
+}
+
+export default function useBlogPosts(): UseBlogPosts {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -560,5 +568,9 @@ export default function useBlogPosts() {
     setLoading(false);
   }, 1000);
 
-  return { posts, loading };
+  const create = async (post: BlogPostCreate) => {
+    return supabase.from("blog_posts").insert(post);
+  };
+
+  return { posts, loading, create };
 }
