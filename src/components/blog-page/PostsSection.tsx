@@ -17,16 +17,21 @@ function matchesQuery(text: string, searchQuery: string) {
 
 export default function PostsSection({ adminMode, title }: PostsSectionProps) {
   const { posts, loading, error } = useBlogPosts();
+
+  const NO_CATEGORY = "Sans catégorie";
   const categories = posts
     .map((post) => post.category)
-    .filter((cat, idx, categories) => categories.indexOf(cat) == idx);
+    .filter((cat, idx, categories) => categories.indexOf(cat) == idx)
+    .map((cat) => cat || NO_CATEGORY);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = posts.filter(
     (post) =>
-      (selectedCategory === "all" || post.category === selectedCategory) &&
+      (selectedCategory === "all" ||
+        post.category === selectedCategory ||
+        (post.category == "" && selectedCategory == NO_CATEGORY)) &&
       (matchesQuery(post.title, searchQuery) ||
         matchesQuery(post.description, searchQuery) ||
         post.tags.filter((tag) => matchesQuery(tag, searchQuery)).length > 0),
