@@ -19,6 +19,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
 import NewPost from "./pages/NewPost";
+import Post from "./pages/Post";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -50,7 +51,10 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="solutions" element={<Solutions />} />
             <Route path="pricing" element={<Pricing />} />
-            <Route path="blog" element={<Blog />} />
+            <Route path="blog">
+              <Route index element={<Blog />} />
+              <Route path=":postId" element={<Post />} />
+            </Route>
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="cgv" element={<CGV />} />

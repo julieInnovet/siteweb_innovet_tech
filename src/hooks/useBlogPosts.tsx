@@ -38,3 +38,32 @@ export default function useBlogPosts(): UseBlogPosts {
 
   return { posts, loading, error, create, remove };
 }
+
+interface UseBlogPost {
+  post: BlogPost | null;
+  loading: boolean;
+  error: string | null;
+}
+
+export function useBlogPost(id: string | undefined): UseBlogPost {
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPost() {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("id", id)
+        .single();
+      setPost(data || null);
+      setError(error?.message || null);
+      setLoading(false);
+    }
+    fetchPost();
+  }, [id]);
+
+  return { post, loading, error };
+}

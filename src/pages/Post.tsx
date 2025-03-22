@@ -1,52 +1,28 @@
-import MDEditor from "@uiw/react-md-editor";
-import { Tag } from "lucide-react";
-import rehypeSanitize from "rehype-sanitize";
-import { BlogPost } from "../types/BlogPost";
-import { timestampToLocaleDate } from "../utils/date";
+import { useParams } from "react-router-dom";
+import CtaSection from "../components/layout/CtaSection";
+import PostView from "../components/blog-page/PostView";
+import { useBlogPost } from "../hooks/useBlogPosts";
+import NotFound from "./NotFound";
+import { Spinner } from "flowbite-react";
 
-interface PostProps {
-  post: BlogPost;
-}
+export default function Post() {
+  const { postId } = useParams();
+  const { post, loading, error } = useBlogPost(postId);
 
-export default function Post({ post }: PostProps) {
-  return (
-    <section className="blog-post">
-      <div className="wrapper">
-        <div className="title">
-          <span>
-            Publié le <time>{timestampToLocaleDate(post.created_at)}</time>
-          </span>
-          <ul>
-            {post.tags.map((tag) => (
-              <li key={tag}>
-                <Tag /> {tag}
-              </li>
-            ))}
-          </ul>
-          <h2>{post.title}</h2>
-          <p>{post.description}</p>
-        </div>
-        <div className="content">
-          <article>
-            <MDEditor.Markdown
-              source={post.article}
-              wrapperElement={{
-                "data-color-mode": "light",
-              }}
-              rehypePlugins={[[rehypeSanitize]]}
-              rehypeRewrite={(node, _, parent) => {
-                if (
-                  node.data === "a" &&
-                  parent &&
-                  /^h(1|2|3|4|5|6)/.test(parent.type)
-                ) {
-                  parent.children = parent.children.slice(1);
-                }
-              }}
-            />
-          </article>
-        </div>
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner className="size-24" />
       </div>
-    </section>
+    );
+
+  console.error(error);
+  if (error || post == null) return <NotFound />;
+
+  return (
+    <>
+      <PostView post={post} />
+      <CtaSection />
+    </>
   );
 }

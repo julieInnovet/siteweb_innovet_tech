@@ -59,13 +59,12 @@ export default function PostCard({
     }
   };
 
+  const link = mode == PostCardMode.Preview ? "#" : post.id.toString();
+
   return (
     <>
       <article className="post-card">
-        <NavLink
-          to={mode == PostCardMode.Preview ? "#" : "#"}
-          className="illustration"
-        >
+        <NavLink to={link} className="illustration">
           <object data={post.image_url} type="image/png"></object>
         </NavLink>
 
@@ -82,7 +81,7 @@ export default function PostCard({
         </div>
 
         <h2>
-          <NavLink to="#">{post.title}</NavLink>
+          <NavLink to={link}>{post.title}</NavLink>
         </h2>
         <p>{post.description}</p>
 
@@ -95,7 +94,7 @@ export default function PostCard({
         </ul>
 
         <div className="more">
-          <NavLink to={mode == PostCardMode.Preview ? "#" : "#"}>
+          <NavLink to={link}>
             Lire la suite <ChevronRight />
           </NavLink>
           <span className="read">

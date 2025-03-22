@@ -9,11 +9,11 @@ import { Ban, Save } from "lucide-react";
 import { TagsInput } from "react-tag-input-component";
 import Separator from "../components/layout/Separator";
 import { imageFile2Url } from "../utils/image";
-import Post from "./Post";
 import useBlogPosts from "../hooks/useBlogPosts";
 import { Spinner } from "flowbite-react";
 import { SuccessModal } from "../components/layout/Modal";
 import { Modal } from "flowbite";
+import PostView from "../components/blog-page/PostView";
 
 interface NewPostState {
   title: string;
@@ -253,7 +253,7 @@ export default function NewPost() {
           </div>
         </section>
         <Separator />
-        <Post post={post} />
+        <PostView post={post} />
       </>
     ),
   });
