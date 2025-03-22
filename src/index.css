@@ -157,7 +157,8 @@ section {
 }
 
 & .admin-actions {
-  & a {
+  & a,
+  & button {
     @apply flex gap-1.5 items-center px-4 py-2 text-sm font-medium text-center text-white rounded-2xl focus:ring-4 focus:outline-none;
 
     & svg {

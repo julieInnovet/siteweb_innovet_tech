@@ -12,6 +12,10 @@ import { PostCardMode } from "../../types/PostCardMode";
 import { readingTime } from "../../utils/reading";
 import { BlogPost } from "../../types/BlogPost";
 import { timestampToLocaleDate } from "../../utils/date";
+import { DeleteModal } from "../layout/Modal";
+import { Modal } from "flowbite";
+import useBlogPosts from "../../hooks/useBlogPosts";
+import { useState } from "react";
 
 interface PostCardProps {
   mode?: PostCardMode;
@@ -22,63 +26,108 @@ export default function PostCard({
   mode = PostCardMode.Default,
   post,
 }: PostCardProps) {
+  const { remove } = useBlogPosts();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const getModal = () => {
+    const modalEl = document.getElementById(`deleteModal-${post.id}`);
+    const options = {};
+    const instanceOptions = {
+      id: `deleteModal-${post.id}`,
+      override: true,
+    };
+    return new Modal(modalEl, options, instanceOptions);
+  };
+
+  const openDeleteModal = () => {
+    getModal().show();
+  };
+
+  const closeDeleteModal = () => {
+    getModal().hide();
+  };
+
+  const deletePost = async () => {
+    closeDeleteModal();
+    setLoading(true);
+    const { error } = await remove(post);
+    setLoading(false);
+    setError(error?.message || null);
+    if (!error) {
+      window.location.reload();
+    }
+  };
+
   return (
-    <article className="post-card">
-      <NavLink
-        to={mode == PostCardMode.Preview ? "#" : "#"}
-        className="illustration"
-      >
-        <object data={post.image_url} type="image/png"></object>
-      </NavLink>
-
-      <div className="information">
-        {post.category ? (
-          <span className="category">{post.category}</span>
-        ) : (
-          <span></span>
-        )}
-        <span className="date">
-          <Calendar />
-          <time>{timestampToLocaleDate(post.created_at)}</time>
-        </span>
-      </div>
-
-      <h2>
-        <NavLink to="#">{post.title}</NavLink>
-      </h2>
-      <p>{post.description}</p>
-
-      <ul>
-        {post.tags.map((tag) => (
-          <li key={tag}>
-            <Tag /> {tag}
-          </li>
-        ))}
-      </ul>
-
-      <div className="more">
-        <NavLink to={mode == PostCardMode.Preview ? "#" : "#"}>
-          Lire la suite <ChevronRight />
+    <>
+      <article className="post-card">
+        <NavLink
+          to={mode == PostCardMode.Preview ? "#" : "#"}
+          className="illustration"
+        >
+          <object data={post.image_url} type="image/png"></object>
         </NavLink>
-        <span className="read">
-          <Clock />
-          {readingTime(post.article)}
-        </span>
-      </div>
 
-      {mode == PostCardMode.Admin && (
-        <div className="admin-actions">
-          <NavLink to="#" className="edit">
-            <Edit />
-            Modifier
-          </NavLink>
-          <NavLink to="#" className="delete">
-            <Trash />
-            Supprimer
-          </NavLink>
+        <div className="information">
+          {post.category ? (
+            <span className="category">{post.category}</span>
+          ) : (
+            <span></span>
+          )}
+          <span className="date">
+            <Calendar />
+            <time>{timestampToLocaleDate(post.created_at)}</time>
+          </span>
         </div>
-      )}
-    </article>
+
+        <h2>
+          <NavLink to="#">{post.title}</NavLink>
+        </h2>
+        <p>{post.description}</p>
+
+        <ul>
+          {post.tags.map((tag) => (
+            <li key={tag}>
+              <Tag /> {tag}
+            </li>
+          ))}
+        </ul>
+
+        <div className="more">
+          <NavLink to={mode == PostCardMode.Preview ? "#" : "#"}>
+            Lire la suite <ChevronRight />
+          </NavLink>
+          <span className="read">
+            <Clock />
+            {readingTime(post.article)}
+          </span>
+        </div>
+
+        {mode == PostCardMode.Admin && (
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="admin-actions">
+              <NavLink to="#" className="edit">
+                <Edit />
+                Modifier
+              </NavLink>
+              <button className="delete" onClick={openDeleteModal}>
+                <Trash />
+                Supprimer
+              </button>
+            </div>
+            {loading && <span className="text-blue-500">Suppression...</span>}
+            {error && <span className="text-red-500">{error}</span>}
+          </div>
+        )}
+      </article>
+      <DeleteModal
+        id={`deleteModal-${post.id}`}
+        message={`Supprimer cet l'article "${post.title}" ?`}
+        onCancelled={closeDeleteModal}
+        onConfirmed={deletePost}
+      />
+    </>
   );
 }
 
