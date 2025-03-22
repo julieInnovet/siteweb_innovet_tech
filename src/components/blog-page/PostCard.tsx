@@ -100,7 +100,7 @@ export function LoadingPostCard() {
       </div>
 
       <h2>
-        <div className="h-6 bg-secondary-200 rounded-full w-96 max-w-full my-4"></div>
+        <div className="h-6 bg-secondary-200 rounded-full max-w-96 w-full my-4"></div>
       </h2>
       <p>
         <div className="h-2 bg-secondary-200 rounded-full my-4"></div>
