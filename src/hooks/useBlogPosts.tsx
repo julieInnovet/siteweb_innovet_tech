@@ -9,6 +9,7 @@ interface UseBlogPosts {
   error: string | null;
   create: (post: BlogPostCreate) => Promise<PostgrestSingleResponse<null>>;
   remove: (post: BlogPost) => Promise<PostgrestSingleResponse<null>>;
+  update: (post: BlogPost) => Promise<PostgrestSingleResponse<null>>;
 }
 
 export default function useBlogPosts(): UseBlogPosts {
@@ -36,7 +37,11 @@ export default function useBlogPosts(): UseBlogPosts {
     return supabase.from("blog_posts").delete().eq("id", post.id);
   };
 
-  return { posts, loading, error, create, remove };
+  const update = async (post: BlogPost) => {
+    return supabase.from("blog_posts").update(post).eq("id", post.id);
+  };
+
+  return { posts, loading, error, create, remove, update };
 }
 
 interface UseBlogPost {

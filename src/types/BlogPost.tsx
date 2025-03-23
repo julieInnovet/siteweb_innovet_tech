@@ -10,4 +10,5 @@ export interface BlogPostCreate {
 export interface BlogPost extends BlogPostCreate {
   id: number;
   created_at: string;
+  updated_at: string;
 }

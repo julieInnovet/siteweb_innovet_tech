@@ -106,7 +106,7 @@ export default function PostCard({
         {mode == PostCardMode.Admin && (
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="admin-actions">
-              <NavLink to="#" className="edit">
+              <NavLink to={"/admin/edit-post/" + post.id} className="edit">
                 <Edit />
                 Modifier
               </NavLink>

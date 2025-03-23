@@ -1,19 +1,20 @@
 import { useState } from "react";
-import AdminRestricted from "../utils/middleware";
+import AdminRestricted from "../../utils/middleware";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
-import PostCard from "../components/blog-page/PostCard";
-import { PostCardMode } from "../types/PostCardMode";
+import PostCard from "./PostCard";
+import { PostCardMode } from "../../types/PostCardMode";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Ban, Save } from "lucide-react";
 import { TagsInput } from "react-tag-input-component";
-import Separator from "../components/layout/Separator";
-import { imageFile2Url } from "../utils/image";
-import useBlogPosts from "../hooks/useBlogPosts";
+import Separator from "../layout/Separator";
+import { imageFile2Url } from "../../utils/image";
+import useBlogPosts from "../../hooks/useBlogPosts";
 import { Spinner } from "flowbite-react";
-import { SuccessModal } from "../components/layout/Modal";
+import { SuccessModal } from "../layout/Modal";
 import { Modal } from "flowbite";
-import PostView from "../components/blog-page/PostView";
+import PostView from "./PostView";
+import { BlogPost } from "../../types/BlogPost";
 
 interface NewPostState {
   title: string;
@@ -24,34 +25,54 @@ interface NewPostState {
   tags: string[];
 }
 
-export default function NewPost() {
-  const { create } = useBlogPosts();
+interface PostEditProps {
+  initialPost?: BlogPost;
+  title: string;
+}
+
+export default function PostEdit({ initialPost, title }: PostEditProps) {
+  const { create, update } = useBlogPosts();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState<NewPostState>({
-    title: "",
-    description: "",
-    article: "",
-    category: "",
-    image_url: "",
-    tags: [],
+    title: initialPost?.title || "",
+    description: initialPost?.description || "",
+    article: initialPost?.article || "",
+    category: initialPost?.category || "",
+    image_url: initialPost?.image_url || "",
+    tags: initialPost?.tags || [],
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await create({
-      title: formData.title,
-      description: formData.description,
-      article: formData.article,
-      category: formData.category,
-      image_url: formData.image_url,
-      tags: formData.tags,
-    });
+    if (initialPost == null) {
+      const { error } = await create({
+        title: formData.title,
+        description: formData.description,
+        article: formData.article,
+        category: formData.category,
+        image_url: formData.image_url,
+        tags: formData.tags,
+      });
+      setError(error?.message || null);
+    } else {
+      const { error } = await update({
+        id: initialPost.id,
+        title: formData.title,
+        description: formData.description,
+        article: formData.article,
+        category: formData.category,
+        image_url: formData.image_url,
+        tags: formData.tags,
+        created_at: initialPost.created_at,
+        updated_at: new Date().toISOString(),
+      });
+      setError(error?.message || null);
+    }
     setLoading(false);
-    setError(error?.message || null);
     if (!error) {
-      modal.show();
+      openSuccessModal();
     }
   };
 
@@ -80,29 +101,41 @@ export default function NewPost() {
   };
 
   const navigate = useNavigate();
-  const modalEl = document.getElementById("successModal");
-  const options = {
-    onHide: () => {
-      setTimeout(() => {
-        navigate("/admin");
-      }, 500);
-    },
-  };
-  const instanceOptions = {
-    id: "modalEl",
-    override: true,
-  };
-  const modal = new Modal(modalEl, options, instanceOptions);
 
-  const post = {
-    id: -1,
+  const getModal = () => {
+    const modalEl = document.getElementById("successModal");
+    const options = {
+      onHide: () => {
+        setTimeout(() => {
+          navigate("/admin");
+        }, 500);
+      },
+    };
+    const instanceOptions = {
+      id: "successModal",
+      override: true,
+    };
+    return new Modal(modalEl, options, instanceOptions);
+  };
+
+  const openSuccessModal = () => {
+    getModal().show();
+  };
+
+  const closeSuccessModal = () => {
+    getModal().hide();
+  };
+
+  const post: BlogPost = {
+    id: initialPost?.id || -1,
     title: formData.title,
     description: formData.description,
     article: formData.article,
     category: formData.category,
     image_url: formData.image_url,
     tags: formData.tags,
-    created_at: new Date().toISOString(),
+    created_at: initialPost?.created_at || new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   };
 
   return AdminRestricted({
@@ -111,7 +144,7 @@ export default function NewPost() {
         <section>
           <div className="wrapper">
             <div className="title">
-              <h2>Nouvel Article</h2>
+              <h2>{title}</h2>
             </div>
 
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -238,10 +271,8 @@ export default function NewPost() {
         </section>
         <SuccessModal
           id="successModal"
-          title="Article créé avec succès"
-          onClose={() => {
-            modal.hide();
-          }}
+          title="Article enregistré avec succès"
+          onClose={closeSuccessModal}
         />
 
         <Separator />

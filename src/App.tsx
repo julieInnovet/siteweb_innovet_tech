@@ -18,8 +18,9 @@ import LegalMentions from "./pages/LegalMentions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
-import NewPost from "./pages/NewPost";
 import Post from "./pages/Post";
+import PostCreate from "./pages/PostCreate";
+import PostUpdate from "./pages/PostUpdate";
 
 export const ScrollToTop = () => {
   const location = useLocation();
@@ -62,7 +63,8 @@ export default function App() {
             <Route path="legal-mentions" element={<LegalMentions />} />
             <Route path="admin">
               <Route index element={<Admin />} />
-              <Route path="new-post" element={<NewPost />} />
+              <Route path="new-post" element={<PostCreate />} />
+              <Route path="edit-post/:postId" element={<PostUpdate />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="*" element={<NotFound />} />
