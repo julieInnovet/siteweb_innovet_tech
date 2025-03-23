@@ -59,7 +59,7 @@ export default function PostCard({
     }
   };
 
-  const link = mode == PostCardMode.Preview ? "#" : post.id.toString();
+  const link = mode == PostCardMode.Preview ? "#" : "/blog/" + post.id;
 
   return (
     <>
