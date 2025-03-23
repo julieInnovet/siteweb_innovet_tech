@@ -23,7 +23,10 @@ export default function useBlogPosts(): UseBlogPosts {
 
   async function fetchPosts() {
     setLoading(true);
-    const { data, error } = await supabase.from("blog_posts").select("*");
+    const { data, error } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .order("updated_at", { ascending: false });
     setPosts(data || []);
     setError(error?.message || null);
     setLoading(false);
