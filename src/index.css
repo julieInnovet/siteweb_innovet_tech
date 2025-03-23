@@ -32,7 +32,7 @@ a {
 }
 
 hr {
-  @apply mx-auto my-6 h-0 border-t border-secondary-200;
+  @apply mx-auto my-6 h-px border-t-2 border-secondary-200;
 }
 
 .cta {
@@ -59,10 +59,15 @@ label {
 [type="tel"],
 [type="time"],
 [type="week"],
+[type="file"],
 [multiple],
 textarea,
 select {
   @apply block text-secondary-900 text-sm p-3 bg-white border border-secondary-300 rounded-lg w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 focus:outline-none;
+
+  &[type="file"] {
+    @apply p-0;
+  }
 }
 
 .input-group {
@@ -151,6 +156,73 @@ section {
   }
 }
 
+& .admin-actions {
+  & a,
+  & button {
+    @apply flex gap-1.5 items-center px-4 py-2 text-sm font-medium text-center text-white rounded-2xl focus:ring-4 focus:outline-none;
+
+    & svg {
+      @apply size-4;
+    }
+  }
+
+  & .create {
+    @apply bg-green-700 hover:bg-green-800 focus:ring-green-300;
+  }
+
+  & .delete {
+    @apply bg-red-700 hover:bg-red-800 focus:ring-red-300;
+  }
+
+  & .edit {
+    @apply bg-blue-700 hover:bg-blue-800 focus:ring-blue-300;
+  }
+}
+
+.blog-post {
+  @apply grow;
+
+  & .title {
+    @apply flex flex-col gap-4 justify-center text-center;
+
+    & span {
+      @apply text-secondary-900 font-semibold block;
+    }
+
+    & time {
+      @apply text-secondary-500 font-normal;
+    }
+
+    & h2 {
+      @apply text-secondary-900 font-extrabold text-4xl;
+    }
+
+    & p {
+      @apply text-secondary-500 font-normal text-lg;
+    }
+
+    & ul {
+      @apply flex gap-2.5 justify-center;
+
+      & li {
+        @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
+
+        & svg {
+          @apply flex-shrink-0 size-3.5 text-primary-400;
+        }
+      }
+    }
+  }
+
+  & .content {
+    @apply relative flex justify-between;
+
+    & article {
+      @apply w-full pt-8 border-t-2 border-primary-200 lg:text-lg;
+    }
+  }
+}
+
 .card {
   @apply relative bg-white p-6 shadow-soft rounded-xl;
 
@@ -191,8 +263,91 @@ section {
   }
 }
 
+.post-card {
+  @apply p-4 bg-white rounded-2xl border border-secondary-200 shadow-md;
+
+  &:hover {
+    & object {
+      @apply transform scale-125 duration-500;
+    }
+  }
+
+  & .illustration {
+    @apply block rounded-2xl h-48 w-full mb-5 overflow-hidden;
+
+    & object {
+      @apply relative float-left block rounded-2xl inset-0 w-full h-full max-h-full object-cover object-center;
+
+      &::after {
+        @apply absolute inset-0 bg-gradient-to-br from-secondary-800 to-primary-400 opacity-50;
+        content: "";
+      }
+    }
+  }
+
+  & .information {
+    @apply flex gap-4 justify-between items-center;
+
+    & .category {
+      @apply w-fit text-primary-600 font-semibold text-xs px-2.5 py-0.5 bg-primary-100 rounded-2xl;
+    }
+
+    & .date {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5;
+      }
+    }
+  }
+
+  & h2 {
+    @apply text-secondary-900 font-bold text-2xl my-2;
+  }
+
+  & p {
+    @apply text-secondary-500 font-light mb-4;
+  }
+
+  & ul {
+    @apply flex gap-2.5 mb-4;
+
+    & li {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5 text-primary-400;
+      }
+    }
+  }
+
+  & .more {
+    @apply flex gap-4 items-center;
+
+    & a {
+      @apply inline-flex gap-2 text-primary-400 font-medium items-center hover:underline;
+
+      & svg {
+        @apply size-4;
+      }
+    }
+
+    & .read {
+      @apply flex font-semibold text-secondary-500 text-xs gap-1.5 items-center;
+
+      & svg {
+        @apply flex-shrink-0 size-3.5;
+      }
+    }
+  }
+
+  & .admin-actions {
+    @apply mt-4 flex gap-4 items-center justify-around;
+  }
+}
+
 .pricing-card {
-  @apply flex flex-col p-6 mx-auto max-w-lg text-center text-secondary-900 bg-white rounded-2xl border border-secondary-100 shadow xl:p-8 hover:scale-105;
+  @apply flex flex-col p-6 mx-auto max-w-lg text-center text-secondary-900 bg-white rounded-2xl border border-secondary-100 shadow hover:scale-105;
 
   &.highlighted {
     @apply border-primary-400 shadow-soft;
@@ -391,6 +546,107 @@ section {
 
       & span {
         @apply font-medium;
+      }
+    }
+  }
+}
+
+/* ========================================================================== */
+/*                                Third library                               */
+/* ========================================================================== */
+
+.rti--container {
+  --rti-bg: #fff !important;
+  --rti-border: #9dadc3 !important;
+  --rti-main: #4aa394 !important;
+  --rti-radius: 0.5rem !important;
+  --rti-s: 0.5rem !important; /* spacing */
+  --rti-tag: #e2e7ed !important;
+  --rti-tag-remove: #c81e1e !important;
+}
+
+.w-md-editor-text {
+  @apply h-full;
+}
+
+.wmde-markdown {
+  @apply bg-transparent text-secondary-500;
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply text-secondary-900 border-none;
+  }
+
+  & h1,
+  & h2,
+  & h3 {
+    @apply font-bold;
+  }
+
+  & h4,
+  & h5,
+  & h6 {
+    @apply font-semibold;
+  }
+
+  & a {
+    @apply text-primary-400;
+  }
+
+  & hr {
+    @apply mx-auto my-6 h-px border-t border-secondary-200;
+  }
+
+  & ul {
+    @apply list-disc list-inside;
+  }
+
+  & ol {
+    @apply list-decimal list-inside;
+
+    & li p {
+      @apply inline-block m-0;
+    }
+  }
+
+  & pre {
+    @apply bg-white;
+  }
+
+  & table {
+    @apply w-full text-sm text-left rtl:text-right indent-0;
+
+    & thead {
+      @apply text-xs text-secondary-700 uppercase bg-secondary-100 border-none p-0 m-0;
+
+      & tr {
+        @apply bg-transparent border-none;
+      }
+
+      & th {
+        @apply px-6 py-3 border-none m-0;
+      }
+    }
+
+    & tbody {
+      & tr {
+        @apply odd:bg-white even:bg-secondary-100 border-b border-t-0 border-secondary-300 p-0 m-0;
+
+        &:last-child {
+          @apply border-b-0;
+        }
+      }
+
+      & th {
+        @apply px-6 py-4 font-medium text-secondary-900 whitespace-nowrap border-none m-0;
+      }
+
+      & td {
+        @apply px-6 py-4 border-none m-0;
       }
     }
   }
