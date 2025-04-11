@@ -8,7 +8,6 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   address,
@@ -47,33 +46,6 @@ const contactInfo = [
 ];
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    clinicName: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: submit form data to backend
-    console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   return (
     <section>
       <div className="wrapper">
@@ -87,21 +59,18 @@ export default function ContactSection() {
 
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <form className="grid gap-8 mx-auto max-w-screen-md sm:grid-cols-2">
+            <form
+              action="https://n8n-access.duckdns.org/webhook/24f77871-d226-452e-8162-e5201fa69701"
+              method="POST"
+              className="grid gap-8 mx-auto max-w-screen-md sm:grid-cols-2"
+            >
               <div>
                 <label htmlFor="firstName">Prénom</label>
                 <div className="input-group">
                   <div className="prefix">
                     <User />
                   </div>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
+                  <input id="firstName" name="firstName" type="text" required />
                 </div>
               </div>
 
@@ -111,14 +80,7 @@ export default function ContactSection() {
                   <div className="prefix">
                     <User />
                   </div>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={handleChange}
-                  />
+                  <input id="lastName" name="lastName" type="text" required />
                 </div>
               </div>
 
@@ -128,14 +90,7 @@ export default function ContactSection() {
                   <div className="prefix">
                     <Mail />
                   </div>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
+                  <input id="email" name="email" type="email" required />
                 </div>
               </div>
 
@@ -145,13 +100,7 @@ export default function ContactSection() {
                   <div className="prefix">
                     <Phone />
                   </div>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                  />
+                  <input id="phone" name="phone" type="tel" />
                 </div>
               </div>
 
@@ -161,13 +110,7 @@ export default function ContactSection() {
                   <div className="prefix">
                     <Building2 />
                   </div>
-                  <input
-                    id="clinicName"
-                    name="clinicName"
-                    type="text"
-                    value={formData.clinicName}
-                    onChange={handleChange}
-                  />
+                  <input id="clinicName" name="clinicName" type="text" />
                 </div>
               </div>
 
@@ -177,13 +120,7 @@ export default function ContactSection() {
                   <div className="prefix">
                     <List />
                   </div>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                  >
+                  <select id="subject" name="subject" required>
                     <option value="">Sélectionnez un sujet</option>
                     <option value="demo">Demande de démonstration</option>
                     <option value="pricing">Informations tarifaires</option>
@@ -205,8 +142,6 @@ export default function ContactSection() {
                     name="message"
                     rows={4}
                     required
-                    value={formData.message}
-                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <p className="text-sm text-secondary-500 mt-4">
@@ -220,7 +155,6 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                onSubmit={handleSubmit}
                 className="cta text-sm font-medium sm:w-fit"
               >
                 Envoyer le message
